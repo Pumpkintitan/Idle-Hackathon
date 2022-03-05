@@ -1,7 +1,6 @@
-export interface Generator {
-    name: number;
-    cost: number;
-    icon: string;
-    unlocks: Generator[]
+import { Buyable } from "./buyable"
+
+export interface Generator extends Buyable {
+    unlocks: Buyable[];
     production: number;
 }
