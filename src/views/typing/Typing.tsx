@@ -1,7 +1,7 @@
-import { Section } from "../../components/paper/Section";
+import {Section} from "../../components/paper/Section";
 import React from 'react';
-import { TextField, Grid } from "@mui/material";
-import { useLinesOfCode } from "../../hooks/stats/LinesOfCode";
+import {Grid, TextField} from "@mui/material";
+import {useLinesOfCode} from "../../hooks/stats/LinesOfCode";
 
 export function Typing() {
     const [, setCurrency] = useLinesOfCode();
@@ -16,7 +16,7 @@ export function Typing() {
     return (
         <Section title={'Typing'} xs={12}>
             <Grid container item xs={12} padding={2}>
-                <TextField variant="standard" onChange={handleChange} label="Line" fullWidth />
+                <TextField variant="outlined" onChange={handleChange} label="Line" fullWidth/>
             </Grid>
         </Section>
     )
