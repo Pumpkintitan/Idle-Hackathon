@@ -1,9 +1,7 @@
-import {AppBar, IconButton, Toolbar, Typography} from "@mui/material";
+import {AppBar, Toolbar, Typography} from "@mui/material";
 import {useTheme} from "@mui/styles";
 import {ExtendedTheme} from "../../hooks/styles/Theme";
 import React from "react";
-import {sidebarDrawerWidth} from "../../hooks/layout/Drawer";
-import {MenuRounded} from "@mui/icons-material";
 
 const debug = true
 

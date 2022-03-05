@@ -17,18 +17,20 @@ export function Section(props: {
     return (
         <Grid item {...props}>
             <Paper variant={'outlined'} sx={{
-                height: props.fill ? '100%' : props.h,
-                borderColor: props.outline ? theme.palette.outline.main : undefined,
-                borderRadius: 4,
-                width: '100%'
+                // borderColor: theme.palette.outline.main,
+                borderColor: undefined,
+                borderRadius: 1,
+                borderWidth: 1,
+                width: '100%',
+                height: '100%'
             }}>
-                <Grid container justifyContent={'center'} height={'100%'} width={'100%'}>
+                <Grid container height={'100%'} width={'100%'}>
                     {
                         props.title &&
-                        <React.Fragment>
-                            <Grid item spacing={2} xs={12} sx={{padding: 3}}>
+                        <Grid item container xs={12} width={'100%'} sx={{height: 50}}>
+                            <Grid item spacing={2} xs={12} sx={{padding: 2}}>
                                 <Typography variant={'h6'} align={'left'} color={'text.secondary'}
-                                            sx={{fontWeight: 'bold'}}
+                                            sx={{fontWeight: 500}}
                                 >
                                     {props.title}
                                 </Typography>
@@ -36,16 +38,9 @@ export function Section(props: {
                             <Grid item spacing={2} xs={12}>
                                 <Divider light/>
                             </Grid>
-                        </React.Fragment>
+                        </Grid>
                     }
-                    <Grid item container spacing={2} justifyContent={'center'} height={'100%'}
-                          sx={{
-                              padding: props.disablePadding ? 0 : 4,
-                          }}
-                          xs={12}
-                    >
-                        {props.children}
-                    </Grid>
+                    {props.children}
                 </Grid>
             </Paper>
         </Grid>
