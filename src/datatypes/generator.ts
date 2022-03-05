@@ -1,4 +1,4 @@
-interface Generator {
+export interface Generator {
     name: number;
     cost: number;
     icon: string;
