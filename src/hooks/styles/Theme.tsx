@@ -70,25 +70,25 @@ const mainThemeOptions: ExtendedThemeOptions = {
     },
     typography: {
         allVariants: {
-            "fontFamily": `source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 
+            "fontFamily": `'Courier New', source-code-pro, Menlo, Monaco, Consolas, 
             monospace`,
         }
     },
     components: {
         MuiTypography: {
             defaultProps: {
-                fontFamily: `source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 
+                fontFamily: `'Courier New', source-code-pro, Menlo, Monaco, Consolas,
                 monospace`
             }
         },
         MuiButton: {
             styleOverrides: {
                 outlined: {
-                    fontFamily: `source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 
+                    fontFamily: `'Courier New', source-code-pro, Menlo, Monaco, Consolas, 
                     monospace`
                 },
                 text: {
-                    fontFamily: `source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 
+                    fontFamily: `'Courier New', source-code-pro, Menlo, Monaco, Consolas, 
                     monospace`
                 },
                 // same for other variants

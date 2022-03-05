@@ -1,5 +1,5 @@
 import React from "react"
-import {Box, Container, ContainerProps, Grid, Theme} from "@mui/material";
+import {Container, ContainerProps, Grid, Theme} from "@mui/material";
 import {useTheme} from "@mui/styles";
 
 export function ContainerGrid(props: { sidebarOpen: boolean, children: React.ReactNode | React.ReactChildren } & ContainerProps): JSX.Element {
