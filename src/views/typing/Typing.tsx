@@ -1,10 +1,10 @@
 import { Section } from "../../components/paper/Section";
 import React from 'react';
-import { TextField } from "@mui/material";
+import { TextField, Grid } from "@mui/material";
 import { useLinesOfCode } from "../../hooks/stats/LinesOfCode";
 
 export function Typing() {
-    const [currency, setCurrency] = useLinesOfCode();
+    const [, setCurrency] = useLinesOfCode();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.value.length >= 10) {
@@ -15,7 +15,9 @@ export function Typing() {
 
     return (
         <Section title={'Typing'} xs={12}>
-            <TextField id="outlined-basic" onChange={handleChange} label="Line" variant="outlined" />
+            <Grid container item xs={12} padding={2}>
+                <TextField variant="standard" onChange={handleChange} label="Line" fullWidth />
+            </Grid>
         </Section>
     )
 }
