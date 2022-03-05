@@ -6,17 +6,16 @@ import {Stats} from "../../views/stats/Stats";
 import {Typing} from "../../views/typing/Typing";
 import {Grid} from "@mui/material";
 import {Minigames} from "../../views/minigames/Minigames";
-import {Tutorial} from "../../views/tutorial/Tutorial";
 
 export function GamePage() {
     return (
-        <ContainerGrid sidebarOpen={true} maxWidth={'lg'}>
+        <ContainerGrid sidebarOpen={true} maxWidth={'xl'}>
             {/*<HeaderTitle>*/}
             {/*    Epic Game*/}
             {/*</HeaderTitle>*/}
 
-            <Grid container justifyContent={'center'} spacing={2} height={'90vh'}>
-                <Grid item container spacing={2} xs={9}>
+            <Grid container justifyContent={'center'} spacing={2} height={'90vh'} sx={{paddingLeft: 4}}>
+                <Grid item container spacing={2} xs={8}>
                     <Grid item xs={4} container spacing={2}>
                         <Story/>
                     </Grid>
@@ -28,7 +27,7 @@ export function GamePage() {
                         <Minigames/>
                     </Grid>
                 </Grid>
-                <Grid item xs={3} container spacing={2}>
+                <Grid item xs={4} container spacing={2}>
                     <Upgrades/>
                 </Grid>
                 {/*<Grid item xs={4} container spacing={2}>*/}
