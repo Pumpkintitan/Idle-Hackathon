@@ -10,7 +10,7 @@ import { story } from '../../datatypes/story'
 export function Stats() {
     const [currency, setCurrency] = useLinesOfCode();
     const [lps] = useLinesPerSec();
-    const [messages, setMessages] = useMessages()
+    const [, setMessages] = useMessages()
     const [currstory, setCurrstory] = useState(0);
 
     useEffect(() => {
@@ -19,7 +19,7 @@ export function Stats() {
             setCurrstory((c) => c + 1)
         }
     
-    }, [currency])
+    }, [currency, currstory, setMessages])
     
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
