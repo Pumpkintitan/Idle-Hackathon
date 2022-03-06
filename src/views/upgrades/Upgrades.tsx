@@ -132,7 +132,7 @@ export function GeneratorList() {
     const theme: ExtendedTheme = useTheme()
 
     return (
-        <Section title={'Geneartors'} xs={12}>
+        <Section title={'Generators'} xs={12}>
             <List sx={{
                 width: '100%', height: '80vh', overflow: 'scroll',
                 '& > :nth-child(even)': {
