@@ -1,7 +1,7 @@
 import {Section} from "../../components/paper/Section";
-import {Grid, TextField} from "@mui/material";
+import {TextField} from "@mui/material";
 import React from 'react';
-import { WORDS } from "./words.js";
+import {WORDS} from "./words.js";
 
 
 export function Minigames() {
@@ -27,7 +27,7 @@ export function Minigames() {
         <Section title={'Minigames'} xs={12}>
             Minigames
             <TextField variant="outlined" onChange={handleChange} label="Codle" fullWidth/>
-            
+
         </Section>
     )
 }
