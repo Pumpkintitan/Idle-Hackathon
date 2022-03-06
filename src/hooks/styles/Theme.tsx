@@ -58,10 +58,10 @@ const mainThemeOptions: ExtendedThemeOptions = {
         },
         background: {
             // default: "linear-gradient(45deg, #cb5cff, #9c61f8)",
-            default: "#111111",
+            default: "#000000",
             // default: "url(https://wallpaperaccess.com/download/dark-minimalist-568180)",
             // default: "url(https://wallpaperaccess.com/download/minimalist-space-1145565)",
-            paper: "#000",
+            paper: "#101317",
             navbar: "#000",
             // paper: "#161323"
         },
