@@ -15,7 +15,6 @@ export function Scroller() {
     const [[index, lineNo], setLineNo] = useState([0, 0])
     const maxLines = 8
 
-    console.log(speed)
     useEffect(() => {
         const interval = setInterval(() => {
             setLineNo(val => {
@@ -31,7 +30,7 @@ export function Scroller() {
         return () => {
             clearInterval(interval);
         };
-    }, [setLineNo, speed]);
+    }, [setLineNo]);
     return (
         <>
             {
