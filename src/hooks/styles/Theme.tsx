@@ -123,8 +123,9 @@ const mainThemeOptions: ExtendedThemeOptions = {
                         // outline: '1px solid slategrey'
                     },
                     "*::-webkit-scrollbar-corner": {backgroundColor: 'transparent',},
-                    '*': {
-                        'user-select': 'none'
+                    '*::selection': {
+                        color: '#000',
+                        backgroundColor: '#FF00FF',
                     }
                 },
             },
