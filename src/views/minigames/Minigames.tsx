@@ -69,18 +69,18 @@ export function Minigames() {
         }
     };
     return (
-        <Section title={'Minigames'} xs={12}>
+        <Section title={'Codle'} xs={12}>
             <Box display={'flex'} flexDirection={'column'} height={'100%'} sx={{
                 paddingTop: 12,
                 padding: 1,
             }}>
-                <Typography variant={'subtitle1'} sx={{marginTop: 4}}>
+                <Typography variant={'subtitle1'} sx={{marginTop: 4, marginBottom: 4}}>
                     You have 5 tries to guess this 5 letter word for a bonus multiplier.
                 </Typography>
                 <Typography variant={'subtitle1'}>
                     Tries Left: {triesLeft}
                 </Typography>
-                <Typography variant={'subtitle1'}>
+                <Typography variant={'subtitle1'} sx={{marginTop: 3, marginBottom: 2}}>
                     Correct Letters: {wrongPos}
                 </Typography>
                 <Typography variant={'subtitle1'}>
