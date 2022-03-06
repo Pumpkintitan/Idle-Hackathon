@@ -13,7 +13,7 @@ export function HookProvider(props: { children: React.ReactElement | React.React
             <LinesOfCodeContext.Provider value={React.useState(0)}> {/*TODO: Load value from cookie later*/}
                 <UpgradesContext.Provider value={React.useState<string[]>([])}>
                     <GeneratorsContext.Provider value={React.useState<Map<string, number>>(new Map())}>
-                    <MessagesContext.Provider value={React.useState<string[]>([])}>
+                    <MessagesContext.Provider value={React.useState<string[]>(['asdasd'])}>
                         <LinesPerSecContext.Provider value={React.useState(0)}>
                             <CssBaseline key="css-baseline" />
                             {props.children}
