@@ -1,6 +1,5 @@
-import {Section} from "../../components/paper/Section";
 import React from 'react';
-import {List, ListItem} from "@mui/material";
+import {Grid, List, ListItem} from "@mui/material";
 import {useMessages} from "../../hooks/messages/Messages";
 import {useTheme} from "@mui/styles";
 import {ExtendedTheme} from "../../hooks/styles/Theme";
@@ -8,11 +7,11 @@ import {ExtendedTheme} from "../../hooks/styles/Theme";
 export function Story() {
     const [messages,] = useMessages()
     const theme: ExtendedTheme = useTheme()
-    
+
     return (
-        <Section title={'Story'} xs={12}>
+        <Grid container>
             <List sx={{
-                height: '40vh', overflowY: 'scroll', width: '100%',
+                height: '30vh', overflowY: 'scroll', width: '100%',
                 '& > *': {
                     borderBottom: `1px solid ${theme.palette.outline.main}`,
                     borderTop: `none`,
@@ -35,6 +34,6 @@ export function Story() {
                     )
                 }
             </List>
-        </Section>
+        </Grid>
     )
 }

@@ -157,8 +157,8 @@ function GeneratorListItem(props: Generator) {
                                    disabled={generator.cost * Math.pow(1.05, (manualGenerators.get(generator.name) || 0)) > currency || (!(generators.has(generator.requisites || "")) && !(generator.requisites == null))}>
                             +1
                         </BuyButton>
-                        <BuyButton onClick={() => buyGenerator(generator.name, 10, generator.cost * Math.pow(1.05, ((manualGenerators.get(generator.name) || 0)+10)))}
-                                   disabled={generator.cost * Math.pow(1.05, ((manualGenerators.get(generator.name) || 0)+10)) * 10 > currency || (!(generators.has(generator.requisites || "")) && !(generator.requisites == null))}>
+                        <BuyButton onClick={() => buyGenerator(generator.name, 10, generator.cost * Math.pow(1.05, ((manualGenerators.get(generator.name) || 0))))}
+                                   disabled={generator.cost * Math.pow(1.05, ((manualGenerators.get(generator.name) || 0))) * 10 > currency || (!(generators.has(generator.requisites || "")) && !(generator.requisites == null))}>
                             +10
                         </BuyButton>
                     </ButtonGroup>
