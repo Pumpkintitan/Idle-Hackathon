@@ -1,10 +1,11 @@
 import { Buyable } from "./buyable";
-import { TableRow, TableColumnPlusAfter, TableSearch, FamilyTree, AccountStar } from '@mitch528/mdi-material-ui'
+import { TableRow, TableColumnPlusAfter, TableSearch, FamilyTree } from '@mitch528/mdi-material-ui'
 import { AccountPlusOutline, AccountMultiplePlusOutline, AccountStarOutline, AccountGroupOutline} from '@mitch528/mdi-material-ui'
 import { AccountSearchOutline, AccountQuestionOutline, CardAccountDetailsOutline, BadgeAccountAlertOutline } from '@mitch528/mdi-material-ui'
 import { WeatherNightPartlyCloudy, CloudLockOutline, CloudUploadOutline } from '@mitch528/mdi-material-ui'
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
-import { WrenchOutline, PackageVariantClosed, Server, AirFilter } from '@mitch528/mdi-material-ui'
+import { PackageVariantClosed, Server, AirFilter } from '@mitch528/mdi-material-ui'
+import DownloadIcon from '@mui/icons-material/Download';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import BiotechIcon from '@mui/icons-material/Biotech';
 import BarChartIcon from '@mui/icons-material/BarChart';
@@ -122,7 +123,7 @@ export const upgrades: Upgrade[] = [
     {
         name: "Download More RAM",
         cost: 100,
-        icon: <WrenchOutline />,
+        icon: <DownloadIcon />,
         requisites: null,
         description: "",
         multiplier: 1.25,
