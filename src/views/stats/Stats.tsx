@@ -14,11 +14,12 @@ export function Stats() {
     const [currstory, setCurrstory] = useState(0);
 
     useEffect(() => {
-        if (currency >= story[currstory].locneeded) {
-            setMessages((me) => [story[currstory].text].concat(me))
-            setCurrstory((c) => c + 1)
+        if (currency <= 1000000000000000){
+            if (currency >= story[currstory].locneeded) {
+                setMessages((me) => [story[currstory].text].concat(me))
+                setCurrstory((c) => c + 1)
+            }
         }
-    
     }, [currency])
     
 
