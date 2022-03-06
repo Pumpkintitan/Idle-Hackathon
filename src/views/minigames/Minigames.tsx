@@ -18,7 +18,7 @@ export function Minigames() {
         return str.substring(0, index) + chr + str.substring(index + 1);
     }
 
-    const [bonus, setBonus] = useMiniGameBonus()
+    const [, setBonus] = useMiniGameBonus()
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.value.length === 5) {
             let guess = event.target.value
@@ -40,7 +40,6 @@ export function Minigames() {
                         if (guess[i] === word[j] && i !== j) {
                             if (!wrongPos.includes(guess[i])) {
                                 setWrongPos((wrongPos) => (wrongPos + guess[i]))
-
                             }
                         }
                         else if (guess[i] === word[j] && i === j) {
@@ -52,17 +51,18 @@ export function Minigames() {
                         }
                     }
                 }
-            }
-            setTriesLeft((tl) => tl -= 1)
-            if (triesLeft === 1) {
-                setTriesLeft((tl) => tl = 5)
-                setbtext((bt) => `Wrong, try again. The word was ${word}`)
-                setWord((word) => WORDS[Math.floor(Math.random() * WORDS.length)])
-                setWrongPos((wp) => "")
-                setDisplayWord((dw) => "-----")
-                setTimeout(() => {
-                    setbtext((bt) => "")
-                  }, 5000);
+
+                setTriesLeft((tl) => tl -= 1)
+                if (triesLeft === 0) {
+                    setTriesLeft((tl) => tl = 5)
+                    setbtext((bt) => `Wrong, try again. The word was ${word}`)
+                    setWord((word) => WORDS[Math.floor(Math.random() * WORDS.length)])
+                    setWrongPos((wp) => "")
+                    setDisplayWord((dw) => "-----")
+                    setTimeout(() => {
+                        setbtext((bt) => "")
+                    }, 5000);
+                }
             }
             event.target.value = ""
 
@@ -74,15 +74,12 @@ export function Minigames() {
             <Box display={'flex'} flexDirection={'column'} height={'100%'} sx={{
                 paddingTop: 12,
                 padding: 1,
-                '& > *': {
-                    marginTop: 3
-                }
             }}>
                 <Typography variant={'subtitle1'} sx={{marginTop: 4}}>
                     You have 5 tries to guess this 5 letter word for a bonus multiplier.
                 </Typography>
                 <Typography variant={'subtitle1'}>
-                    Tries Left: {triesLeft - 1}
+                    Tries Left: {triesLeft}
                 </Typography>
                 <Typography variant={'subtitle1'}>
                     Correct Letters: {wrongPos}
@@ -90,7 +87,7 @@ export function Minigames() {
                 <Typography variant={'subtitle1'}>
                     {btext}
                 </Typography>
-                <Grid container spacing={0.5} justifyContent={'center'}>
+                <Grid container spacing={0.5} justifyContent={'center'} sx={{marginTop: 3}}>
                     {[0,1,2,3,4].map((i) => (
                         <Grid item xs={2} key={1}>
                             <Paper key={i} sx={{backgroundColor: '#666'}}>
@@ -101,7 +98,7 @@ export function Minigames() {
                         </Grid>
                     ))}
                 </Grid>
-                <TextField variant="outlined" onChange={handleChange} label="Codle" fullWidth/>
+                <TextField variant="outlined" onChange={handleChange} label="Guess" fullWidth sx={{marginTop: 3}}/>
             </Box>
         </Section>
     )
