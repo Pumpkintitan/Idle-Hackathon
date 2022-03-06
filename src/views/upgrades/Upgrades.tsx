@@ -36,10 +36,10 @@ function GeneratorListItem(props: Generator) {
                 sx={{width: '100%'}}
                 secondaryAction={
                     <ButtonGroup variant="text" >
-                        <Button onClick={() => buyGenerator("Script", 1)}>
+                        <Button onClick={() => buyGenerator(generator.name, 1)}>
                             +1
                         </Button>
-                        <Button onClick={() => buyGenerator("Script", 10)}>
+                        <Button onClick={() => buyGenerator(generator.name, 10)}>
                             +10
                         </Button>
                     </ButtonGroup>
