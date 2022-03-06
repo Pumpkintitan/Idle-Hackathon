@@ -17,7 +17,7 @@ export function Minigames() {
                 for (let j = 0; j < word.length; j++) {
                     if(guess == word && i == j)
                     {
-
+                        continue;
                     }
                 }
             }

@@ -18,11 +18,8 @@ import {useLinesOfCode} from "../../hooks/stats/LinesOfCode";
 import {BuyButton} from "../../components/button/BuyButton";
 import {ExtendedTheme} from "../../hooks/styles/Theme";
 import {useUpgrades} from "../../hooks/upgrades/Upgrades";
-<<<<<<< HEAD
 import clsx from 'clsx';
-=======
 import { numberConverter } from "../../utils/numberconverter";
->>>>>>> 04539ab747e3cde9e5f6037ace235b61abeb5c83
 
 function UpgradeListItem(props: Upgrade & {associatedGenerator: string}) {
 
