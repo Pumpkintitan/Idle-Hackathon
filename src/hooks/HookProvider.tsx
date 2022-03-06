@@ -5,7 +5,8 @@ import { LinesOfCodeContext } from "./stats/LinesOfCode";
 import { UpgradesContext } from "./upgrades/Upgrades";
 import { ManualGeneratorsContext, GeneratorsContext } from "./upgrades/Generators";
 import { LinesPerSecContext } from './upgrades/LinesPerSec';
-import {MessagesContext} from "./messages/Messages";
+import { MessagesContext } from "./messages/Messages";
+import { MiniGameBonusContext } from "./upgrades/MiniGameBonusState";
 
 export function HookProvider(props: { children: React.ReactElement | React.ReactChildren }) {
     return (
@@ -16,8 +17,10 @@ export function HookProvider(props: { children: React.ReactElement | React.React
                         <ManualGeneratorsContext.Provider value={React.useState<Map<string, number>>(new Map())}>
                             <MessagesContext.Provider value={React.useState<string[]>(['asdasd'])}>
                                 <LinesPerSecContext.Provider value={React.useState(0)}>
-                                    <CssBaseline key="css-baseline" />
-                                    {props.children}
+                                    <MiniGameBonusContext.Provider value={React.useState(1)}>
+                                        <CssBaseline key="css-baseline" />
+                                        {props.children}
+                                    </MiniGameBonusContext.Provider>
                                 </LinesPerSecContext.Provider>
                             </MessagesContext.Provider>
                         </ManualGeneratorsContext.Provider>
