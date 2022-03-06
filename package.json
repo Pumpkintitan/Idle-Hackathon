@@ -26,12 +26,10 @@
     "regexify-string": "^1.0.16",
     "simplebar-react": "^2.3.6",
     "typescript": "^4.5.4",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "word-list-json": "^0.2.0"
   },
   "devDependencies": {
-    "eslint": "^7.20.3",
-    "eslint-config-react-app": "^7.0.0",
-    "eslint-plugin-react": "^7.28.0",
     "@types/cors": "^2.8.12",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.2",
@@ -39,7 +37,10 @@
     "@types/react-router": "^5.1.16",
     "@types/react-router-dom": "^5.1.8",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
-    "@typescript-eslint/parser": "^4.25.0"
+    "@typescript-eslint/parser": "^4.25.0",
+    "eslint": "^7.20.3",
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-react": "^7.28.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
