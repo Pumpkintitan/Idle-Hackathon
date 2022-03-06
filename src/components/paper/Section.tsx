@@ -39,7 +39,7 @@ export function Section(props: {
                         <Grid item container xs={12} width={'100%'} sx={{height: 50}}>
                             <Grid item spacing={2} xs={12} sx={{padding: 2}}>
                                 <Typography variant={'h6'} align={'left'} color={'text.secondary'}
-                                            sx={{fontWeight: 500}}
+                                            sx={{fontWeight: 500, textAlign: "center"}}
                                 >
                                     {title}
                                 </Typography>
