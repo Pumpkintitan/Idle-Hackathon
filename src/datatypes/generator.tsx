@@ -28,7 +28,7 @@ export const generators: Generator[] = [
     },
     {
         name: "Cloud Service",
-        cost: 1000,
+        cost: 10000,
         icon: <CloudPrintOutline />,
         requisites: "GPU Acceleration",
         description: "",
@@ -37,7 +37,7 @@ export const generators: Generator[] = [
     },
     {
         name: "Startup",
-        cost: 10000,
+        cost: 1000000,
         icon: <GarageVariant />,
         requisites: "Acceleration",
         description: "",
@@ -46,7 +46,7 @@ export const generators: Generator[] = [
     },
     {
         name: "Startup Incubator",
-        cost: 100000,
+        cost: 10000000000,
         icon: <OfficeBuildingOutline />,
         requisites: "Startup",
         description: "",
@@ -55,7 +55,7 @@ export const generators: Generator[] = [
     },
     {
         name: "Quantum Technology",
-        cost: 100000,
+        cost: 100000000000000,
         icon: <Atom />,
         requisites: "Startup Incubator",
         description: "",
