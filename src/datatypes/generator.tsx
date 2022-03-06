@@ -10,7 +10,7 @@ export interface Generator extends Buyable {
 export const generators: Generator[] = [
     {
         name: "Script",
-        cost: 100,
+        cost: 10,
         icon: <ExpansionCard />,
         requisites: null,
         description: "",
@@ -19,7 +19,7 @@ export const generators: Generator[] = [
     },
     {
         name: "GPU Acceleration",
-        cost: 1000,
+        cost: 100,
         icon: <ExpansionCard />,
         requisites: "Script",
         description: "",
@@ -28,7 +28,7 @@ export const generators: Generator[] = [
     },
     {
         name: "Cloud Service",
-        cost: 10000,
+        cost: 1000,
         icon: <ExpansionCard />,
         requisites: "GPU Acceleration",
         description: "",
@@ -37,7 +37,7 @@ export const generators: Generator[] = [
     },
     {
         name: "Startup",
-        cost: 100000,
+        cost: 10000,
         icon: <ExpansionCard />,
         requisites: "Acceleration",
         description: "",
@@ -46,7 +46,7 @@ export const generators: Generator[] = [
     },
     {
         name: "Startup Incubator",
-        cost: 1000000,
+        cost: 100000,
         icon: <ExpansionCard />,
         requisites: "Startup",
         description: "",
@@ -55,7 +55,7 @@ export const generators: Generator[] = [
     },
     {
         name: "Quantum Technology",
-        cost: 1000000,
+        cost: 100000,
         icon: <ExpansionCard />,
         requisites: "Startup Incubator",
         description: "",

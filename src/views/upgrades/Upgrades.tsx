@@ -6,6 +6,8 @@ import FolderIcon from '@mui/icons-material/Folder';
 import { Upgrade, upgrades } from "../../datatypes/upgrade";
 import { Generator, generators } from "../../datatypes/generator";
 import { Buyable } from "../../datatypes/buyable"
+import { useLinesOfCode } from "../../hooks/stats/LinesOfCode";
+import { BuyButton } from "../../components/button/BuyButton";
 
 function UpgradeListItem(props: Upgrade) {
     const upgrade = props;
@@ -23,9 +25,11 @@ function UpgradeListItem(props: Upgrade) {
 function GeneratorListItem(props: Generator) {
     const [, setGenerators] = useGenerators()
 
+    const [currency, setCurrency] = useLinesOfCode();
+    
     const buyGenerator = (name: string, value: number) => {setGenerators((generator) => {
         generator.set(name, (generator.get(name) || 0)+ value)
-        console.log(generator)
+        setCurrency((oldValue) => oldValue-value);
         return generator
     })}
     
@@ -37,12 +41,12 @@ function GeneratorListItem(props: Generator) {
                 sx={{width: '100%'}}
                 secondaryAction={
                     <ButtonGroup variant="text" >
-                        <Button onClick={() => buyGenerator(generator.name, 1)}>
+                        <BuyButton onClick={() => buyGenerator(generator.name, generator.cost)} disabled={generator.cost>currency}>
                             +1
-                        </Button>
-                        <Button onClick={() => buyGenerator(generator.name, 10)}>
+                        </BuyButton>
+                        <BuyButton onClick={() => buyGenerator(generator.name, generator.cost)} disabled={generator.cost*10>currency}>
                             +10
-                        </Button>
+                        </BuyButton>
                     </ButtonGroup>
                 }
             >
