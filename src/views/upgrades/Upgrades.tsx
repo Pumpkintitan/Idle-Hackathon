@@ -17,10 +17,13 @@ function UpgradeListItem(props: Upgrade) {
             <IconButton>
                 <Avatar variant={'rounded'}
                     sx={{
+                        '& > *': {
+                          width: "15px"  
+                        },
                         background: "none",
-                        color: theme.palette.primary.main,
+                        color: theme.palette.primary.light,
                         '&.Mui-disabled': {
-                            color: theme.palette.primary.light
+                            color: theme.palette.primary.main
                         }
                     }}
                 >
@@ -32,6 +35,8 @@ function UpgradeListItem(props: Upgrade) {
 }
 
 function GeneratorListItem(props: Generator) {
+    const theme = useTheme();
+
     const [, setGenerators] = useGenerators()
 
     const [currency, setCurrency] = useLinesOfCode();
@@ -60,7 +65,21 @@ function GeneratorListItem(props: Generator) {
                 }
             >
                 <ListItemAvatar>
-                    <Avatar variant={'rounded'}>
+                    <Avatar variant={'rounded'}
+                        sx={{
+                            width: "50px",
+                            height: "50px",
+                            '& > *': {
+                              width: "42px",
+                              height: "42px"
+                            },
+                            background: "none",
+                            color: theme.palette.primary.light,
+                            '&.Mui-disabled': {
+                                color: theme.palette.primary.main
+                            }
+                        }}
+                    >
                         {generator.icon}
                     </Avatar>
                 </ListItemAvatar>
