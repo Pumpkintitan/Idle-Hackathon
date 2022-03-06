@@ -11,7 +11,7 @@ export function Stats() {
     return (
         <Section title={'Stats'} xs={12}>
             <List>
-                {Math.trunc( currency )} -- {lps} Lines per Second
+                {Math.trunc( currency )} -- {Math.trunc(lps)} Lines per Second
             </List>
         </Section>
     )

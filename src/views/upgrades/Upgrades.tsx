@@ -23,7 +23,7 @@ function UpgradeListItem(props: Upgrade) {
 }
 
 function GeneratorListItem(props: Generator) {
-    const [, setGenerators] = useGenerators()
+    const [generators, setGenerators] = useGenerators()
 
     const [currency, setCurrency] = useLinesOfCode();
     
@@ -56,7 +56,7 @@ function GeneratorListItem(props: Generator) {
                     </Avatar>
                 </ListItemAvatar>
                 <ListItemText
-                    primary={generator.name}
+                    primary={`${generator.name} (${Math.floor(generators.get(generator.name) || 0)})`}
                     secondary={`${generator.cost} LOC`}
                 />
             </ListItem>

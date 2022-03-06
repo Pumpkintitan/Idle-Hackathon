@@ -17,29 +17,59 @@ export function MainLoop() {
     useEffect(() => {
         const interval = setInterval(() => {
             setTime(Date.now())
+            let frame = 0
             let multiplier = 1
-            let persec = 0
             if (upgradesf.length != 0) {
                 upgradesf.forEach((key: string) => {
                     multiplier *= upgrades.filter(upgrade => upgrade.name == key)[0].multiplier || 1
                 });
             }
             if (generatorsf.size != 0) {
-                generatorsf.forEach((value: number, key: string) => {
-                    let prod = generators.filter(generate => generate.name == key)[0].production * value * multiplier
-                    setCurrency((currency) => (currency + (prod/30)))
-                    persec += prod
-                });
+                if (generatorsf.get("Quantum Technology") != undefined) {
+                    setGenerators((generator) => {
+                        generator.set("Startup Incubator", (generator.get("Startup Incubator") || 0) + multiplier * (generatorsf.get("Quantum Technology") || 1)/30);
+                        return generator;
+                    })
+                }
+
+                if (generatorsf.get("Startup Incubator") != undefined) {
+                    setGenerators((generator) => {
+                        generator.set("Startup", (generator.get("Startup") || 0) + multiplier * (generatorsf.get("Startup Incubator") || 1)/30);
+                        return generator;
+                    })
+                }
+
+                if (generatorsf.get("Startup") != undefined) {
+                    setGenerators((generator) => {
+                        generator.set("Cloud Service", (generator.get("Cloud Service") || 0) + multiplier * (generatorsf.get("Startup") || 1)/30);
+                        return generator;
+                    })
+                }
+
+                if (generatorsf.get("Cloud Service") != undefined) {
+                    setGenerators((generator) => {
+                        generator.set("GPU Acceleration", (generator.get("GPU Acceleration") || 0) + multiplier * (generatorsf.get("Cloud Service") || 1)/30);
+                        return generator;
+                    })
+                }
+                if (generatorsf.get("GPU Acceleration") != undefined) {
+                    setGenerators((generator) => {
+                        generator.set("Script", (generator.get("Script") || 0) + multiplier * (generatorsf.get("GPU Acceleration") || 1)/30);
+                        return generator;
+                    })
+                }
+                let prod = generators.filter(generate => generate.name == "Script")[0].production * (generatorsf.get("Script") || 0) * multiplier
+                setCurrency((currency) => (currency + (prod / 30)))
+                setLPS(prod)
             }
-            setLPS(persec)
-        }, (1000/30));
+        }, (1000 / 30));
         return () => {
             clearInterval(interval);
         };
     }, []);
 
     return (
-        <div/>
+        <div />
     )
 }
 
