@@ -33,7 +33,7 @@ export function Stats() {
 
     return (
         <Grid item xs={12} container padding={2} alignItems={'center'} justifyContent={'space-between'}>
-            <Grid item xs={12} height={'50vh'} sx={{paddingTop: 16}}>
+            <Grid item xs={12} height={'40vh'} sx={{paddingTop: 16}}>
                 <Typography variant={'h3'}>
                     {numberConverter(currency)} lines
                 </Typography>
@@ -41,7 +41,7 @@ export function Stats() {
                     {numberConverter(lps)} Lines per Second
                 </Typography>
             </Grid>
-            <Grid item xs={12} height={'30vh'}>
+            <Grid item xs={12} height={'40vh'}>
                 <Scroller/>
             </Grid>
             <Grid item xs={12} height={'10vh'}>

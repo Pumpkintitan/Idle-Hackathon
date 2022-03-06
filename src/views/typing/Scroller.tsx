@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {useTheme} from "@mui/styles";
 import {ExtendedTheme} from "../../hooks/styles/Theme";
 import {useLinesPerSec} from "../../hooks/upgrades/LinesPerSec";
@@ -11,9 +11,20 @@ function count(s: string, sub: string) {
 
 export function Scroller() {
     const theme: ExtendedTheme = useTheme()
-    const [speed,] = useLinesPerSec()
+    const [lps,] = useLinesPerSec()
+    const speed = useMemo(() => {
+        if (lps === 0) {
+            return 0.0000001
+        } else if (lps > 1000000) {
+            return 40
+        } else if (lps > 1000) {
+            return 20
+        } else {
+            return 12
+        }
+    }, [lps])
     const [[index, lineNo], setLineNo] = useState([0, 0])
-    const maxLines = 8
+    const maxLines = 12
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -26,17 +37,17 @@ export function Scroller() {
                 return [index + 1, lineNo]
             })
 
-        }, (1000 / 8));
+        }, (1000 / speed))
         return () => {
             clearInterval(interval);
         };
-    }, [setLineNo]);
+    }, [setLineNo, speed]);
     return (
         <>
             {
-                scroller_text.slice(Math.max(lineNo - 8, 0), lineNo).map(
+                scroller_text.slice(Math.max(lineNo - maxLines, 0), lineNo).map(
                     (line, i) => (
-                        (i === 7 ?
+                        (i === (maxLines - 1) ?
                                 <Typography sx={{width: '100%', textOverflow: "ellipsis", overflow: "hidden"}} noWrap
                                             key={i}>
                                     {line.slice(0, index)}

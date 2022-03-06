@@ -6,6 +6,9 @@ export interface ExtendedTheme extends Theme {
         outline: {
             main: string;
         },
+        tertiary?: {
+            main: string,
+        },
         background: {
             navbar: string;
         } & TypeBackground
@@ -16,7 +19,10 @@ export interface ExtendedTheme extends Theme {
 interface ExtendedThemeOptions extends ThemeOptions {
     palette: {
         outline?: {
-            main: string
+            main: string,
+        },
+        tertiary?: {
+            main: string,
         },
         background: {
             navbar: string;
@@ -50,6 +56,9 @@ const mainThemeOptions: ExtendedThemeOptions = {
             main: '#00FFFF',
             contrastText: '#111828',
             // light: '#79018C'
+        },
+        tertiary: {
+            main: '#FF00FF',
         },
         text: {
             primary: '#00FF00',
