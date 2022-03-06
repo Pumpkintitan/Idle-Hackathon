@@ -9,7 +9,7 @@ export interface Generator extends Buyable {
 
 export const generators: Generator[] = [
     {
-        name: "Script",
+        name: "Automation Script",
         cost: 10,
         icon: <FileCodeOutline />,
         requisites: null,
@@ -21,7 +21,7 @@ export const generators: Generator[] = [
         name: "GPU Acceleration",
         cost: 100,
         icon: <ExpansionCard />,
-        requisites: "Script",
+        requisites: "Automation Script",
         description: "",
         production: 10,
         upgrades: ["Download More RAM", "Order New Units", "Combine Units", "Upgrade Cooling"]

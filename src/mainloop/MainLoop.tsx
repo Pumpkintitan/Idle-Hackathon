@@ -88,12 +88,12 @@ export function MainLoop() {
                         }
                     }
                     setGenerators((generator) => {
-                        generator.set("Script", (generator.get("Script") || 0) + multiplier * (gencounts.get("GPU Acceleration") || 1) / 30);
+                        generator.set("Automation Script", (generator.get("Automation Script") || 0) + multiplier * (gencounts.get("GPU Acceleration") || 1) / 30);
                         return generator;
                     })
                 }
 
-                let b = upgradesf.get("Script")
+                let b = upgradesf.get("Automation Script")
                 let multiplier = 1
                 if (b !== undefined) {
                     for (let i = 0; i < b.length; i++) {
@@ -101,7 +101,7 @@ export function MainLoop() {
                         multiplier *= upgrades.filter(upgrade => upgrade.name === r)[0].multiplier
                     }
                 }
-                let prod = generators.filter(generate => generate.name === "Script")[0].production * (gencounts.get("Script") || 0) * multiplier * bonus
+                let prod = generators.filter(generate => generate.name === "Automation Script")[0].production * (gencounts.get("Automation Script") || 0) * multiplier * bonus
                 setCurrency((currency) => (currency + (prod / 30)))
                 setLPS(prod)
             }
