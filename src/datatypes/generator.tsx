@@ -24,7 +24,7 @@ export const generators: Generator[] = [
         requisites: "Script",
         description: "",
         production: 10,
-        upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
+        upgrades: ["Referbish Old Units", "Order New Units", "Combine Units", "Upgrade Cooling"]
     },
     {
         name: "Cloud Service",
@@ -33,7 +33,7 @@ export const generators: Generator[] = [
         requisites: "GPU Acceleration",
         description: "",
         production: 100,
-        upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
+        upgrades: ["Increase Runtime", "Secure Connection", "Upgrade Service", "Scale Up"]
     },
     {
         name: "Startup",
@@ -42,7 +42,7 @@ export const generators: Generator[] = [
         requisites: "Acceleration",
         description: "",
         production: 1000,
-        upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
+        upgrades: ["Hire Intern", "Hire Fulltime Developers", "Hire Senior Developer", "Hire Contractors"]
     },
     {
         name: "Startup Incubator",
@@ -51,7 +51,7 @@ export const generators: Generator[] = [
         requisites: "Startup",
         description: "",
         production: 10000,
-        upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
+        upgrades: ["Search for Startups", "Invest in Early Startup", "Invest in Establised Startup", "Sell Successfull Startup"]
     },
     {
         name: "Quantum Technology",
@@ -60,6 +60,6 @@ export const generators: Generator[] = [
         requisites: "Startup Incubator",
         description: "",
         production: 100000,
-        upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
+        upgrades: ["Hire Researchers", "Conduct Research", "Collect Data", "Perform Expiriment"]
     },
 ];
