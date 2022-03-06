@@ -27,9 +27,9 @@ function GeneratorListItem(props: Generator) {
 
     const [currency, setCurrency] = useLinesOfCode();
     
-    const buyGenerator = (name: string, value: number) => {setGenerators((generator) => {
+    const buyGenerator = (name: string, value: number, cost: number) => {setGenerators((generator) => {
         generator.set(name, (generator.get(name) || 0)+ value)
-        setCurrency((oldValue) => oldValue-value);
+        setCurrency((oldValue) => oldValue-cost);
         return generator
     })}
     
@@ -41,10 +41,10 @@ function GeneratorListItem(props: Generator) {
                 sx={{width: '100%'}}
                 secondaryAction={
                     <ButtonGroup variant="text" >
-                        <BuyButton onClick={() => buyGenerator(generator.name, generator.cost)} disabled={generator.cost>currency}>
+                        <BuyButton onClick={() => buyGenerator(generator.name, 1, generator.cost)} disabled={generator.cost>currency}>
                             +1
                         </BuyButton>
-                        <BuyButton onClick={() => buyGenerator(generator.name, generator.cost)} disabled={generator.cost*10>currency}>
+                        <BuyButton onClick={() => buyGenerator(generator.name, 10, generator.cost)} disabled={generator.cost*10>currency}>
                             +10
                         </BuyButton>
                     </ButtonGroup>
