@@ -10,7 +10,7 @@ import { MainLoop } from "../../mainloop/MainLoop";
 
 export function GamePage() {
     return (
-        <ContainerGrid sidebarOpen={true} maxWidth={'xl'}>
+        <ContainerGrid maxWidth={'xl'}>
             {/*<HeaderTitle>*/}
             {/*    Epic Game*/}
             {/*</HeaderTitle>*/}
