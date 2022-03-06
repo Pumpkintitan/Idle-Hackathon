@@ -48,4 +48,8 @@ export const story: StoryText[] = [
         text: "Finally! The moment is here to start up your new technology and get first place at the hackathon!",
         locneeded:100000000000000
     },
+    {
+        text: "Crash",
+        locneeded:10000000000000000000000000000
+    },
 ]
