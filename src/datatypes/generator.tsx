@@ -13,7 +13,7 @@ export const generators: Generator[] = [
         cost: 10,
         icon: <FileCodeOutline />,
         requisites: null,
-        description: "",
+        description: "Write a script to automate your project.",
         production: 1,
         upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
     },
@@ -22,7 +22,7 @@ export const generators: Generator[] = [
         cost: 100,
         icon: <ExpansionCard />,
         requisites: "Automation Script",
-        description: "",
+        description: "Improve your computers performance.",
         production: 10,
         upgrades: ["Download More RAM", "Order New Units", "Combine Units", "Upgrade Cooling"]
     },
@@ -31,7 +31,7 @@ export const generators: Generator[] = [
         cost: 10000,
         icon: <CloudPrintOutline />,
         requisites: "GPU Acceleration",
-        description: "",
+        description: "Start running your program through a paid cloud platform.",
         production: 100,
         upgrades: ["Increase Runtime", "Secure Connection", "Upgrade Service", "Scale Up"]
     },
@@ -40,7 +40,7 @@ export const generators: Generator[] = [
         cost: 1000000,
         icon: <GarageVariant />,
         requisites: "Cloud Service",
-        description: "",
+        description: "Create a startup to help you write more code to run in the cloud.",
         production: 1000,
         upgrades: ["Hire Intern", "Hire Fulltime Developers", "Hire Senior Developer", "Hire Contractors"]
     },
@@ -49,7 +49,7 @@ export const generators: Generator[] = [
         cost: 10000000000,
         icon: <OfficeBuildingOutline />,
         requisites: "Startup",
-        description: "",
+        description: "Become an angel investor and foster startups to work on your code.",
         production: 10000,
         upgrades: ["Search for Startups", "Invest in Early Startup", "Invest in Establised Startup", "Sell Successfull Startup"]
     },
@@ -58,7 +58,7 @@ export const generators: Generator[] = [
         cost: 100000000000000,
         icon: <Atom />,
         requisites: "Startup Incubator",
-        description: "",
+        description: "Start quantum computer research to improve the profitability of your startup empire.",
         production: 100000,
         upgrades: ["Hire Researchers", "Conduct Research", "Collect Data", "Perform Expiriment"]
     },

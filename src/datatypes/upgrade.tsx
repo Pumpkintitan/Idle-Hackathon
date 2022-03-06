@@ -24,7 +24,7 @@ export const upgrades: Upgrade[] = [
         cost: 10000,
         icon: <TableSearch />,
         requisites: "Binary Tree",
-        description: "",
+        description: "Binary trees are nothing compared to a look up table. O(1)!",
         multiplier: 2,
         generatorsRequired: 100
     },
@@ -33,7 +33,7 @@ export const upgrades: Upgrade[] = [
         cost: 10000,
         icon: <FamilyTree />,
         requisites: "Linked List",
-        description: "",
+        description: "You learned a lot in your data structures class.",
         multiplier: 1.75,
         generatorsRequired: 50
     },
@@ -42,7 +42,7 @@ export const upgrades: Upgrade[] = [
         cost: 1000,
         icon: <TableColumnPlusAfter />,
         requisites: "Array",
-        description: "",
+        description: "Like arrays... but better.",
         multiplier: 1.5,
         generatorsRequired: 25
     },
@@ -51,7 +51,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <TableRow />,
         requisites: null,
-        description: "Super cool epic multiline description",
+        description: "Improve your script with a new data structure. How were you not using these before?",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -61,7 +61,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <BubbleChartIcon />,
         requisites: "Upgrade Service",
-        description: "",
+        description: "Increase your cluster size. More power!",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -70,7 +70,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <CloudUploadOutline />,
         requisites: "Secure Connection",
-        description: "",
+        description: "Increase your payment plan to run on newer and more powerful machines.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -79,7 +79,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <CloudLockOutline />,
         requisites: "Increase Runtime",
-        description: "",
+        description: "Make sure no one can steal your (totaly not copied from StackOverflow) code.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -88,7 +88,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <WeatherNightPartlyCloudy />,
         requisites: null,
-        description: "",
+        description: "Pay to have your script run all day and all night.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -98,7 +98,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <AirFilter />,
         requisites: "Combine Units",
-        description: "",
+        description: "Improve the airflow in your server room to extend the life of those sweet sweet 3090s.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -107,7 +107,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <Server />,
         requisites: "Order New Units",
-        description: "",
+        description: "Buy a server rack and create a dedicated machine for your program. Also all your friends will be jealous.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -116,7 +116,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <PackageVariantClosed />,
         requisites: "Download More RAM",
-        description: "",
+        description: "One GPU? Ha! Pump those numbers up!",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -125,7 +125,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <DownloadIcon />,
         requisites: null,
-        description: "",
+        description: "Visit https://www.downloadmoreram.com to improve the speed of your computer... right?",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -135,7 +135,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <AccountGroupOutline />,
         requisites: "Hire Senior Developer",
-        description: "",
+        description: "Why manage your own developers when somone else can do it for you.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -144,7 +144,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <AccountStarOutline />,
         requisites: "Hire Fulltime Developers",
-        description: "",
+        description: "Hire for some real talent to make sure those full time devs stay focused... wait a minute.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -153,7 +153,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <AccountMultiplePlusOutline />,
         requisites: "Hire Intern",
-        description: "",
+        description: "Hire for some real talent to make sure those interns stay focused.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -162,7 +162,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <AccountPlusOutline />,
         requisites: null,
-        description: "",
+        description: "I'm sure they'll figure it out. I could do this stuff in college... I think.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -172,7 +172,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <BadgeAccountAlertOutline />,
         requisites: "Invest in Establised Startup",
-        description: "",
+        description: "We dealt with them for long enough, time to let them go and cash out.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -181,7 +181,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <CardAccountDetailsOutline />,
         requisites: "Invest in Early Startup",
-        description: "",
+        description: "They were doing well on their own, let capatlize on their success.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -190,7 +190,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <AccountQuestionOutline />,
         requisites: "Search for Startups",
-        description: "",
+        description: "Finally, one thats promising. Lets buy them before someone else does first.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -199,7 +199,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <AccountSearchOutline />,
         requisites: null,
-        description: "",
+        description: "Take you first steps in to finding startups to take over your project.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -209,7 +209,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <ScienceIcon />,
         requisites: "Collect Data",
-        description: "",
+        description: "Lets finally put that data to work. And by 'lets' I mean 'let the scientists do it,' they're the ones with PHDs after all.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -218,7 +218,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <BarChartIcon />,
         requisites: "Conduct Research",
-        description: "",
+        description: "Why do research if you are not going to waste time on cool data visulization. I guess it helps improve our product or something too.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -227,7 +227,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <BiotechIcon />,
         requisites: "Hire Researchers",
-        description: "",
+        description: "Get the researchers to do some actual work. What were they doing sitting around all day.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -236,7 +236,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <PsychologyIcon />,
         requisites: null,
-        description: "",
+        description: "Finally, someone smarter than me.",
         multiplier: 1.25,
         generatorsRequired: 10
     },
