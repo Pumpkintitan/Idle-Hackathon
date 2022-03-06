@@ -32,7 +32,7 @@ export function Minigames() {
                 setTimeout(() => {
                     setBonus(1)
                     setbtext((bt) => bt = "")
-                  }, 5000);
+                  }, 30000);
             }
             else {
                 for (let i = 0; i < guess.length; i++) {
