@@ -1,7 +1,7 @@
 import {Section} from "../../components/paper/Section";
 import React from 'react';
 import { useGenerators } from "../../hooks/upgrades/Generators";
-import {Avatar, Box, Button, ButtonGroup, IconButton, List, ListItem, ListItemAvatar, ListItemText, Tooltip} from "@mui/material";
+import {Avatar, Box, Button, ButtonGroup, IconButton, List, ListItem, ListItemAvatar, ListItemText, Tooltip, useTheme} from "@mui/material";
 import FolderIcon from '@mui/icons-material/Folder';
 import { Upgrade, upgrades } from "../../datatypes/upgrade";
 import { Generator, generators } from "../../datatypes/generator";
@@ -11,10 +11,19 @@ import { BuyButton } from "../../components/button/BuyButton";
 
 function UpgradeListItem(props: Upgrade) {
     const upgrade = props;
+    const theme = useTheme();
     return (
         <Tooltip title={upgrade.name}>
             <IconButton>
-                <Avatar variant={'rounded'}>
+                <Avatar variant={'rounded'}
+                    sx={{
+                        background: "none",
+                        color: theme.palette.primary.main,
+                        '&.Mui-disabled': {
+                            color: theme.palette.primary.light
+                        }
+                    }}
+                >
                     {upgrade.icon}
                 </Avatar>
             </IconButton>
@@ -29,7 +38,7 @@ function GeneratorListItem(props: Generator) {
     
     const buyGenerator = (name: string, value: number, cost: number) => {setGenerators((generator) => {
         generator.set(name, (generator.get(name) || 0)+ value)
-        setCurrency((oldValue) => oldValue-cost);
+        setCurrency((oldValue) => oldValue-cost*value);
         return generator
     })}
     
@@ -40,7 +49,7 @@ function GeneratorListItem(props: Generator) {
             <ListItem
                 sx={{width: '100%'}}
                 secondaryAction={
-                    <ButtonGroup variant="text" >
+                    <ButtonGroup variant="outlined" >
                         <BuyButton onClick={() => buyGenerator(generator.name, 1, generator.cost)} disabled={generator.cost>currency}>
                             +1
                         </BuyButton>
