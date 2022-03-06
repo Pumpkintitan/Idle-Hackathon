@@ -31,7 +31,7 @@ function UpgradeTooltipBody(props: { upgrade: Upgrade, associatedGenerator: stri
                 <Avatar variant={'rounded'}
                         sx={{
                             background: "none",
-                            color: theme.palette.secondary.main,
+                            color: theme.palette.primary.light,
                             fontSize: '45px',
                             width: '50px',
                             height: '50px',
@@ -79,7 +79,7 @@ function GeneartorTooltipBody(props: { generator: Generator, owned: number }) {
                 <Avatar variant={'rounded'}
                         sx={{
                             background: "none",
-                            color: theme.palette.secondary.main,
+                            color: theme.palette.primary.light,
                             fontSize: '45px',
                             width: '50px',
                             height: '50px',
@@ -121,7 +121,7 @@ function GeneartorTooltipBody(props: { generator: Generator, owned: number }) {
 function UpgradeListItem(props: Upgrade & { associatedGenerator: string }) {
 
     const upgrade = props;
-    const theme = useTheme();
+    const theme: ExtendedTheme = useTheme();
     const [upgradesPurchased, setUpgrades] = useUpgrades();
     const [currency, setCurrency] = useLinesOfCode();
 
@@ -145,10 +145,10 @@ function UpgradeListItem(props: Upgrade & { associatedGenerator: string }) {
                     sx={(upgradesPurchased.get(props.associatedGenerator) || []).includes(upgrade.name) ? {
                         '> *': {color: theme.palette.primary.main},
                         '&.Mui-disabled > *': {
-                            color: theme.palette.primary.main
+                            color: theme.palette.tertiary.main
                         }
                     } : {
-                        color: theme.palette.secondary.main,
+                        color: theme.palette.primary.main,
                         '&.Mui-disabled > *': {
                             color: theme.palette.primary.light
                         }
@@ -156,13 +156,14 @@ function UpgradeListItem(props: Upgrade & { associatedGenerator: string }) {
                 >
                     <Avatar variant={'rounded'}
                             sx={{
+                                transition: "0.3s",
                                 width: "18px",
                                 height: "18px",
                                 '& > *': {
                                     width: "18px"
                                 },
                                 background: "none",
-                                color: theme.palette.secondary.main
+                                color: theme.palette.primary.main
                             }}
                     >
                         {upgrade.icon}
@@ -222,6 +223,7 @@ function GeneratorListItem(props: Generator) {
                     <Tooltip title={<GeneartorTooltipBody generator={generator} owned={(manualGenerators.get(generator.name) || 0)}/>} arrow>
                         <Avatar variant={'rounded'}
                                 sx={(generators.has(generator.requisites || "")) || generator.requisites == null ? {
+                                    transition: "0.3s",
                                     width: "60px",
                                     height: "60px",
                                     '& > *': {
@@ -231,6 +233,7 @@ function GeneratorListItem(props: Generator) {
                                     background: "none",
                                     color: theme.palette.primary.main
                                 } : {
+                                    transition: "0.3s",
                                     width: "60px",
                                     height: "60px",
                                     background: "none",

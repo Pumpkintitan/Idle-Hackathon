@@ -6,7 +6,7 @@ export interface ExtendedTheme extends Theme {
         outline: {
             main: string;
         },
-        tertiary?: {
+        tertiary: {
             main: string,
         },
         background: {
