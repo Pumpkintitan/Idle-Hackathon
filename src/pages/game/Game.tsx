@@ -1,6 +1,6 @@
 import React from "react"
 import {ContainerGrid} from "../../components/layout/ContainerGrid";
-import {Upgrades} from "../../views/upgrades/Upgrades";
+import {GeneratorList} from "../../views/upgrades/Upgrades";
 import {Story} from "../../views/story/Story";
 import {Stats} from "../../views/stats/Stats";
 import {Typing} from "../../views/typing/Typing";
@@ -28,7 +28,7 @@ export function GamePage() {
                     </Grid>
                 </Grid>
                 <Grid item xs={4} container spacing={2}>
-                    <Upgrades/>
+                    <GeneratorList/>
                 </Grid>
                 {/*<Grid item xs={4} container spacing={2}>*/}
                 {/*    <Tutorial/>*/}

@@ -1,56 +1,65 @@
 import { Buyable } from "./buyable";
+import { ExpansionCard } from '@mitch528/mdi-material-ui'
+import React from "react";
 
 export interface Generator extends Buyable {
     production: number;
+    upgrades: string[];
 }
 
 export const generators: Generator[] = [
     {
         name: "Script",
         cost: 100,
-        icon: "../assets/placeholder.png",
+        icon: <ExpansionCard />,
         requisites: null,
         description: "",
-        production: 1
+        production: 1,
+        upgrades: ["Array", "Linked List", "Binary Tree"]
     },
     {
         name: "GPU Acceleration",
         cost: 1000,
-        icon: "../assets/placeholder.png",
+        icon: <ExpansionCard />,
         requisites: "Script",
         description: "",
-        production: 10
+        production: 10,
+        upgrades: ["Array", "Linked List", "Binary Tree"]
     },
     {
         name: "Cloud Service",
         cost: 10000,
-        icon: "../assets/placeholder.png",
+        icon: <ExpansionCard />,
         requisites: "GPU Acceleration",
         description: "",
-        production: 100
+        production: 100,
+        upgrades: ["Array", "Linked List", "Binary Tree"]
     },
     {
         name: "Startup",
         cost: 100000,
-        icon: "../assets/placeholder.png",
+        icon: <ExpansionCard />,
         requisites: "Acceleration",
         description: "",
-        production: 1000
+        production: 1000,
+        upgrades: ["Array", "Linked List", "Binary Tree"]
     },
     {
         name: "Startup Incubator",
         cost: 1000000,
-        icon: "../assets/placeholder.png",
+        icon: <ExpansionCard />,
         requisites: "Startup",
         description: "",
-        production: 10000
+        production: 10000,
+        upgrades: ["Array", "Linked List", "Binary Tree"]
     },
     {
         name: "Quantum Technology",
         cost: 1000000,
-        icon: "../assets/placeholder.png",
+        icon: <ExpansionCard />,
         requisites: "Startup Incubator",
         description: "",
-        production: 100000
+        production: 100000,
+        upgrades: ["Array", "Linked List", "Binary Tree"]
     },
 ];
