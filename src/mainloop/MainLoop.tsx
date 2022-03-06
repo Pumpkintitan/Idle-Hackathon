@@ -5,6 +5,7 @@ import { useGenerators } from '../hooks/upgrades/Generators';
 import { generators } from '../datatypes/generator'
 import { upgrades } from '../datatypes/upgrade'
 import { useLinesPerSec } from '../hooks/upgrades/LinesPerSec'
+import { useMiniGameBonus } from '../hooks/upgrades/MiniGameBonusState';
 
 export function MainLoop() {
     const [, setTime] = useState(Date.now());
@@ -12,7 +13,7 @@ export function MainLoop() {
     const [, setLPS] = useLinesPerSec();
     const [upgradesf,] = useUpgrades();
     const [gencounts, setGenerators] = useGenerators();
-
+    const [bonus, setBonus] = useMiniGameBonus()
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -100,7 +101,7 @@ export function MainLoop() {
                             multiplier *= upgrades.filter(upgrade => upgrade.name == r)[0].multiplier
                         }
                     }
-                let prod = generators.filter(generate => generate.name == "Script")[0].production * (gencounts.get("Script") || 0) * multiplier
+                let prod = generators.filter(generate => generate.name == "Script")[0].production * (gencounts.get("Script") || 0) * multiplier * bonus
                 setCurrency((currency) => (currency + (prod / 30)))
                 setLPS(prod)
             }
@@ -108,7 +109,7 @@ export function MainLoop() {
         return () => {
             clearInterval(interval);
         };
-    }, []);
+    }, [bonus]);
 
     return (
         <div />
