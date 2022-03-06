@@ -66,7 +66,7 @@ const mainThemeOptions: ExtendedThemeOptions = {
             // paper: "#161323"
         },
         outline: {
-            main: '#00FF00'
+            main: '#2f3749'
         }
     },
     typography: {
