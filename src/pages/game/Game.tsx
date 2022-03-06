@@ -19,6 +19,7 @@ export function GamePage() {
                 <Grid item container spacing={2} xs={8}>
                     <Grid item xs={4} container spacing={2}>
                         <Minigames/>
+                        <Story/>
                     </Grid>
                     <Grid item xs={8} container spacing={2}>
                         <Stats/>
