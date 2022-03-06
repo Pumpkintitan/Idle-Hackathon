@@ -15,7 +15,7 @@ export function HookProvider(props: { children: React.ReactElement | React.React
                 <UpgradesContext.Provider value={React.useState<Map<string, string[]>>(new Map())}>
                     <GeneratorsContext.Provider value={React.useState<Map<string, number>>(new Map())}>
                         <ManualGeneratorsContext.Provider value={React.useState<Map<string, number>>(new Map())}>
-                            <MessagesContext.Provider value={React.useState<string[]>(['asdasd'])}>
+                            <MessagesContext.Provider value={React.useState<string[]>([])}>
                                 <LinesPerSecContext.Provider value={React.useState(0)}>
                                     <MiniGameBonusContext.Provider value={React.useState(1)}>
                                         <CssBaseline key="css-baseline" />

@@ -24,14 +24,14 @@ export function Minigames() {
             let guess = event.target.value
             if (guess === word) {
                 setBonus(7)
-                setbtext((bt) => bt = "Correct! x7 production!")
-                setTriesLeft((tl) => tl = 5)
-                setWord((word) => word = WORDS[Math.floor(Math.random() * WORDS.length)])
-                setWrongPos((wp) => wp = "")
-                setDisplayWord((dw) => dw = "-----")
+                setbtext((bt) => "Correct! x7 production!")
+                setTriesLeft((tl) => 5)
+                setWord((word) => WORDS[Math.floor(Math.random() * WORDS.length)])
+                setWrongPos((wp) => "")
+                setDisplayWord((dw) => "-----")
                 setTimeout(() => {
                     setBonus(1)
-                    setbtext((bt) => bt = "")
+                    setbtext((bt) => "")
                   }, 30000);
             }
             else {
@@ -56,12 +56,12 @@ export function Minigames() {
             setTriesLeft((tl) => tl -= 1)
             if (triesLeft === 1) {
                 setTriesLeft((tl) => tl = 5)
-                setbtext((bt) => bt = "Wrong, try again")
-                setWord((word) => word = WORDS[Math.floor(Math.random() * WORDS.length)])
-                setWrongPos((wp) => wp = "")
-                setDisplayWord((dw) => dw = "-----")
+                setbtext((bt) => `Wrong, try again. The word was ${word}`)
+                setWord((word) => WORDS[Math.floor(Math.random() * WORDS.length)])
+                setWrongPos((wp) => "")
+                setDisplayWord((dw) => "-----")
                 setTimeout(() => {
-                    setbtext((bt) => bt = "")
+                    setbtext((bt) => "")
                   }, 5000);
             }
             event.target.value = ""
