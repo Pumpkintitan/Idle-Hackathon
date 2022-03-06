@@ -1,12 +1,14 @@
-import { Button, ButtonProps } from "@mui/material";
+import { Button, ButtonProps, useTheme } from "@mui/material";
 import React from "react";
 
 export function BuyButton(props: ButtonProps) {
+    const theme = useTheme();
     return (
         <Button {... props}
             sx={{
                 '&.Mui-disabled': {
-                    color: "#ababab"
+                    color: theme.palette.primary.light,
+                    border: "0.5px solid"
                 }
              }}
         />

@@ -1,5 +1,5 @@
 import { Buyable } from "./buyable";
-import { ExpansionCard } from '@mitch528/mdi-material-ui'
+import { FileCodeOutline, ExpansionCard, CloudPrintOutline, GarageVariant, OfficeBuildingOutline, Atom } from '@mitch528/mdi-material-ui'
 import React from "react";
 
 export interface Generator extends Buyable {
@@ -11,11 +11,11 @@ export const generators: Generator[] = [
     {
         name: "Script",
         cost: 10,
-        icon: <ExpansionCard />,
+        icon: <FileCodeOutline />,
         requisites: null,
         description: "",
         production: 1,
-        upgrades: ["Array", "Linked List", "Binary Tree"]
+        upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
     },
     {
         name: "GPU Acceleration",
@@ -24,42 +24,42 @@ export const generators: Generator[] = [
         requisites: "Script",
         description: "",
         production: 10,
-        upgrades: ["Array", "Linked List", "Binary Tree"]
+        upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
     },
     {
         name: "Cloud Service",
         cost: 1000,
-        icon: <ExpansionCard />,
+        icon: <CloudPrintOutline />,
         requisites: "GPU Acceleration",
         description: "",
         production: 100,
-        upgrades: ["Array", "Linked List", "Binary Tree"]
+        upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
     },
     {
         name: "Startup",
         cost: 10000,
-        icon: <ExpansionCard />,
+        icon: <GarageVariant />,
         requisites: "Acceleration",
         description: "",
         production: 1000,
-        upgrades: ["Array", "Linked List", "Binary Tree"]
+        upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
     },
     {
         name: "Startup Incubator",
         cost: 100000,
-        icon: <ExpansionCard />,
+        icon: <OfficeBuildingOutline />,
         requisites: "Startup",
         description: "",
         production: 10000,
-        upgrades: ["Array", "Linked List", "Binary Tree"]
+        upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
     },
     {
         name: "Quantum Technology",
         cost: 100000,
-        icon: <ExpansionCard />,
+        icon: <Atom />,
         requisites: "Startup Incubator",
         description: "",
         production: 100000,
-        upgrades: ["Array", "Linked List", "Binary Tree"]
+        upgrades: ["Array", "Linked List", "Binary Tree", "Hash Table"]
     },
 ];

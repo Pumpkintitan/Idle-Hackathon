@@ -44,6 +44,7 @@ const mainThemeOptions: ExtendedThemeOptions = {
             main: '#00FF00',
             // light: '#b000cc',
             // contrastText: '#89348c'
+            light: "#ababab"
         },
         secondary: {
             main: '#00FFFF',
