@@ -12,7 +12,7 @@ export const upgrades: Upgrade[] = [
         name: "Hash Table",
         cost: 10000,
         icon: <TableSearch />,
-        requisites: null,
+        requisites: "Binary Tree",
         description: "",
         multiplier: 2,
         generatorsRequired: 100
@@ -21,7 +21,7 @@ export const upgrades: Upgrade[] = [
         name: "Binary Tree",
         cost: 10000,
         icon: <FamilyTree />,
-        requisites: null,
+        requisites: "Linked List",
         description: "",
         multiplier: 1.75,
         generatorsRequired: 50
@@ -30,7 +30,7 @@ export const upgrades: Upgrade[] = [
         name: "Linked List",
         cost: 1000,
         icon: <TableColumnPlusAfter />,
-        requisites: null,
+        requisites: "Array",
         description: "",
         multiplier: 1.5,
         generatorsRequired: 25

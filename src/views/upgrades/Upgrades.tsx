@@ -31,16 +31,13 @@ function UpgradeListItem(props: Upgrade & {associatedGenerator: string}) {
     const buyUpgrade = (generatorName: string, upgradeName: string, cost: number) => {
         setUpgrades((upgrade) => {
             let updatedUpgrades = new Map(upgrade);
-            let updatedList = updatedUpgrades.get(generatorName) || [];//.push(upgradeName);
+            let updatedList = updatedUpgrades.get(generatorName) || [];
             
             updatedUpgrades.set(generatorName, updatedList.concat(upgradeName));
             setCurrency((oldValue) => oldValue - cost);
             return updatedUpgrades;
         });
     }
-
-    // console.log((upgradesPurchased.get(props.associatedGenerator) || []).includes(upgrade.name));
-    // console.log(upgradesPurchased);
 
     return (
         <Tooltip title={upgrade.name} >
@@ -84,6 +81,7 @@ function GeneratorListItem(props: Generator) {
 
     const [generators, setGenerators] = useGenerators();
     const [manualGenerators, setManualGenerators] = useManualGenerators();
+    const [upgradesPurchased, setUpgrades] = useUpgrades();
     const [currency, setCurrency] = useLinesOfCode();
 
     const buyGenerator = (name: string, value: number, cost: number) => {
@@ -100,7 +98,9 @@ function GeneratorListItem(props: Generator) {
 
     const generator = props;
     const generatorUpgrades = upgrades.filter((upgrade: Upgrade) => {
-       return generator.upgrades.includes(upgrade.name) && ((manualGenerators.get(generator.name) || 0) >= upgrade.generatorsRequired)
+       return generator.upgrades.includes(upgrade.name) && 
+       ((manualGenerators.get(generator.name) || 0) >= upgrade.generatorsRequired) &&
+       ((upgradesPurchased.get(generator.name) || []).includes(upgrade.requisites || "") || upgrade.requisites == null)
     });
 
     return (
