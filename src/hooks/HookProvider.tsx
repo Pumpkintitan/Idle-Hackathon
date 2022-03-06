@@ -9,8 +9,8 @@ export function HookProvider(props: { children: React.ReactElement | React.React
     return (
         <ThemeProvider theme={mainTheme}>
             <LinesOfCodeContext.Provider value={React.useState(0)}> {/*TODO: Load value from cookie later*/}
-                <UpgradesContext.Provider value={React.useState([""])}>
-                    <GeneratorsContext.Provider value={React.useState(new Map())}>
+                <UpgradesContext.Provider value={React.useState<string[]>([])}>
+                    <GeneratorsContext.Provider value={React.useState<Map<string, number>>(new Map())}>
                         <CssBaseline key="css-baseline" />
                         {props.children}
                     </GeneratorsContext.Provider>

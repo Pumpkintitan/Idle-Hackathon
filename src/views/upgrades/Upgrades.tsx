@@ -27,6 +27,7 @@ function GeneratorListItem(props: Generator) {
         generator.set(name, (generator.get(name) || 0)+ value)
         return generator
     })}
+    
     const generator = props;
     const generatorUpgrades = upgrades.filter((upgrade: Upgrade) => generator.upgrades.includes(upgrade.name));
     return (
