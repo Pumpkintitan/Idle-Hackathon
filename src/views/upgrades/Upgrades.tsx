@@ -18,31 +18,62 @@ import {useLinesOfCode} from "../../hooks/stats/LinesOfCode";
 import {BuyButton} from "../../components/button/BuyButton";
 import {ExtendedTheme} from "../../hooks/styles/Theme";
 import {useUpgrades} from "../../hooks/upgrades/Upgrades";
+import clsx from 'clsx';
 
-function UpgradeListItem(props: Upgrade) {
+function UpgradeListItem(props: Upgrade & {associatedGenerator: string}) {
 
     const upgrade = props;
     const theme = useTheme();
+    const [upgradesPurchased, setUpgrades] = useUpgrades();
+    const [currency, setCurrency] = useLinesOfCode();
+
+    const buyUpgrade = (generatorName: string, upgradeName: string, cost: number) => {
+        setUpgrades((upgrade) => {
+            let updatedUpgrades = new Map(upgrade);
+            let updatedList = updatedUpgrades.get(generatorName) || [];//.push(upgradeName);
+            
+            updatedUpgrades.set(generatorName, updatedList.concat(upgradeName));
+            setCurrency((oldValue) => oldValue - cost);
+            return updatedUpgrades;
+        });
+    }
+
+    // console.log((upgradesPurchased.get(props.associatedGenerator) || []).includes(upgrade.name));
+    // console.log(upgradesPurchased);
+
     return (
-        <Tooltip title={upgrade.name}>
-            <IconButton>
-                <Avatar variant={'rounded'}
-                        sx={{
-                            width: "18px",
-                            height: "18px",
-                            '& > *': {
-                                width: "18px"
-                            },
-                            background: "none",
-                            color: theme.palette.primary.light,
-                            '&.Mui-disabled': {
-                                color: theme.palette.primary.main
-                            }
-                        }}
+        <Tooltip title={upgrade.name} >
+            <span>
+                <IconButton
+                    onClick={() => buyUpgrade(props.associatedGenerator, upgrade.name, upgrade.cost)}
+                    disabled={upgrade.cost > currency || (upgradesPurchased.get(props.associatedGenerator) || []).includes(upgrade.name)}
+                    sx={(upgradesPurchased.get(props.associatedGenerator) || []).includes(upgrade.name) ? {
+                        '> *': {color: theme.palette.primary.main},
+                        '&.Mui-disabled > *': {
+                            color: theme.palette.primary.main
+                        }
+                    } : {
+                        color: theme.palette.secondary.main,
+                        '&.Mui-disabled > *': {
+                            color: theme.palette.primary.light
+                        }
+                    }}
                 >
-                    {upgrade.icon}
-                </Avatar>
-            </IconButton>
+                    <Avatar variant={'rounded'}
+                            sx={{
+                                width: "18px",
+                                height: "18px",
+                                '& > *': {
+                                    width: "18px"
+                                },
+                                background: "none",
+                                color: theme.palette.secondary.main
+                            }}
+                    >
+                        {upgrade.icon}
+                    </Avatar>
+                </IconButton>
+            </span>
         </Tooltip>
     )
 }
@@ -52,18 +83,17 @@ function GeneratorListItem(props: Generator) {
 
     const [generators, setGenerators] = useGenerators();
     const [manualGenerators, setManualGenerators] = useManualGenerators();
-    const [upgradesAvailable, setUpgrades] = useUpgrades();
     const [currency, setCurrency] = useLinesOfCode();
 
     const buyGenerator = (name: string, value: number, cost: number) => {
         setGenerators((generator) => {
-            generator.set(name, (generator.get(name) || 0) + value)
+            generator.set(name, (generator.get(name) || 0) + value);
             setCurrency((oldValue) => oldValue - cost * value);
-            return generator
+            return generator;
         });
         setManualGenerators((generator) => {
-            generator.set(name, (generator.get(name) || 0) + value)
-            return generator
+            generator.set(name, (generator.get(name) || 0) + value);
+            return generator;
         });
     }
 
@@ -99,10 +129,7 @@ function GeneratorListItem(props: Generator) {
                                     height: "50px"
                                 },
                                 background: "none",
-                                color: theme.palette.primary.light,
-                                '&.Mui-disabled': {
-                                    color: theme.palette.primary.main
-                                }
+                                color: theme.palette.primary.main
                             }}
                     >
                         {generator.icon}
@@ -120,7 +147,7 @@ function GeneratorListItem(props: Generator) {
                     flexDirection: 'row-reverse'
                 }}
             >
-                {generatorUpgrades.map((upgrade: Upgrade) => <UpgradeListItem key={upgrade.name} {...upgrade} />)}
+                {generatorUpgrades.map((upgrade: Upgrade) => <UpgradeListItem associatedGenerator={generator.name} key={upgrade.name} {...upgrade} />)}
 
             </ListItem>
         </>
