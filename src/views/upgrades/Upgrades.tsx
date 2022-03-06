@@ -28,8 +28,10 @@ function UpgradeListItem(props: Upgrade) {
             <IconButton>
                 <Avatar variant={'rounded'}
                         sx={{
+                            width: "18px",
+                            height: "18px",
                             '& > *': {
-                                width: "15px"
+                                width: "18px"
                             },
                             background: "none",
                             color: theme.palette.primary.light,
@@ -64,7 +66,7 @@ function GeneratorListItem(props: Generator) {
             return generator
         });
     }
-    
+
     const generator = props;
     const generatorUpgrades = upgrades.filter((upgrade: Upgrade) => {
        return generator.upgrades.includes(upgrade.name) && ((manualGenerators.get(generator.name) || 0) >= upgrade.generatorsRequired)

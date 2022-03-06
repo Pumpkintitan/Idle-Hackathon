@@ -14,8 +14,8 @@ export const upgrades: Upgrade[] = [
         icon: <TableSearch />,
         requisites: null,
         description: "",
-        multiplier: 1.5,
-        generatorsRequired: 40
+        multiplier: 2,
+        generatorsRequired: 100
     },
     {
         name: "Binary Tree",
@@ -23,8 +23,8 @@ export const upgrades: Upgrade[] = [
         icon: <FamilyTree />,
         requisites: null,
         description: "",
-        multiplier: 1.5,
-        generatorsRequired: 30
+        multiplier: 1.75,
+        generatorsRequired: 50
     },
     {
         name: "Linked List",
@@ -33,7 +33,7 @@ export const upgrades: Upgrade[] = [
         requisites: null,
         description: "",
         multiplier: 1.5,
-        generatorsRequired: 20
+        generatorsRequired: 25
     },
     {
         name: "Array",
@@ -41,7 +41,7 @@ export const upgrades: Upgrade[] = [
         icon: <TableRow />,
         requisites: null,
         description: "",
-        multiplier: 1.5,
+        multiplier: 1.25,
         generatorsRequired: 10
     }
 ]
