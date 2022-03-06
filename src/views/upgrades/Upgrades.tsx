@@ -101,7 +101,7 @@ function GeneratorListItem(props: Generator) {
                 </ListItemAvatar>
                 <ListItemText
                     primary={`${generator.name} (${Math.floor(generators.get(generator.name) || 0)})`}
-                    secondary={`${generator.cost.toLocaleString('en-us')} LOC`}
+                    secondary={`${generator.cost} LOC`}
                 />
             </ListItem>
             <ListItem
