@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useLinesOfCode } from '../hooks/stats/LinesOfCode';
-import { useUpgrades } from '../hooks/upgrades/Upgrades';
-import { useGenerators } from '../hooks/upgrades/Generators';
-import { generators } from '../datatypes/generator'
-import { upgrades } from '../datatypes/upgrade'
-import { useLinesPerSec } from '../hooks/upgrades/LinesPerSec'
-import { useMiniGameBonus } from '../hooks/upgrades/MiniGameBonusState';
+import React, {useEffect, useState} from 'react';
+import {useLinesOfCode} from '../hooks/stats/LinesOfCode';
+import {useUpgrades} from '../hooks/upgrades/Upgrades';
+import {useGenerators} from '../hooks/upgrades/Generators';
+import {generators} from '../datatypes/generator'
+import {upgrades} from '../datatypes/upgrade'
+import {useLinesPerSec} from '../hooks/upgrades/LinesPerSec'
+import {useMiniGameBonus} from '../hooks/upgrades/MiniGameBonusState';
 
 export function MainLoop() {
     const [, setTime] = useState(Date.now());
@@ -18,14 +18,14 @@ export function MainLoop() {
     useEffect(() => {
         const interval = setInterval(() => {
             setTime(Date.now())
-            if (gencounts.size != 0) {
-                if (gencounts.get("Quantum Technology") != undefined) {
+            if (gencounts.size !== 0) {
+                if (gencounts.get("Quantum Technology") !== undefined) {
                     let b = upgradesf.get("Quantum Technology")
                     let multiplier = 1
-                    if (b != undefined) {
+                    if (b !== undefined) {
                         for (let i = 0; i < b.length; i++) {
                             let r = b[i] || ""
-                            multiplier *= upgrades.filter(upgrade => upgrade.name == r)[0].multiplier
+                            multiplier *= upgrades.filter(upgrade => upgrade.name === r)[0].multiplier
                         }
                     }
                     setGenerators((generator) => {
@@ -34,13 +34,13 @@ export function MainLoop() {
                     })
                 }
 
-                if (gencounts.get("Startup Incubator") != undefined) {
+                if (gencounts.get("Startup Incubator") !== undefined) {
                     let b = upgradesf.get("Startup Incubator")
                     let multiplier = 1
                     if (b != undefined) {
                         for (let i = 0; i < b.length; i++) {
                             let r = b[i] || ""
-                            multiplier *= upgrades.filter(upgrade => upgrade.name == r)[0].multiplier
+                            multiplier *= upgrades.filter(upgrade => upgrade.name === r)[0].multiplier
                         }
                     }
                     setGenerators((generator) => {
@@ -49,13 +49,13 @@ export function MainLoop() {
                     })
                 }
 
-                if (gencounts.get("Startup") != undefined) {
+                if (gencounts.get("Startup") !== undefined) {
                     let b = upgradesf.get("Startup")
                     let multiplier = 1
                     if (b != undefined) {
                         for (let i = 0; i < b.length; i++) {
                             let r = b[i] || ""
-                            multiplier *= upgrades.filter(upgrade => upgrade.name == r)[0].multiplier
+                            multiplier *= upgrades.filter(upgrade => upgrade.name === r)[0].multiplier
                         }
                     }
                     setGenerators((generator) => {
@@ -64,13 +64,13 @@ export function MainLoop() {
                     })
                 }
 
-                if (gencounts.get("Cloud Service") != undefined) {
+                if (gencounts.get("Cloud Service") !== undefined) {
                     let b = upgradesf.get("Cloud Service")
                     let multiplier = 1
                     if (b != undefined) {
                         for (let i = 0; i < b.length; i++) {
                             let r = b[i] || ""
-                            multiplier *= upgrades.filter(upgrade => upgrade.name == r)[0].multiplier
+                            multiplier *= upgrades.filter(upgrade => upgrade.name === r)[0].multiplier
                         }
                     }
                     setGenerators((generator) => {
@@ -78,13 +78,13 @@ export function MainLoop() {
                         return generator;
                     })
                 }
-                if (gencounts.get("GPU Acceleration") != undefined) {
+                if (gencounts.get("GPU Acceleration") !== undefined) {
                     let b = upgradesf.get("GPU Acceleration")
                     let multiplier = 1
-                    if (b != undefined) {
+                    if (b !== undefined) {
                         for (let i = 0; i < b.length; i++) {
                             let r = b[i] || ""
-                            multiplier *= upgrades.filter(upgrade => upgrade.name == r)[0].multiplier
+                            multiplier *= upgrades.filter(upgrade => upgrade.name === r)[0].multiplier
                         }
                     }
                     setGenerators((generator) => {
@@ -94,14 +94,14 @@ export function MainLoop() {
                 }
 
                 let b = upgradesf.get("Script")
-                    let multiplier = 1
-                    if (b != undefined) {
-                        for (let i = 0; i < b.length; i++) {
-                            let r = b[i] || ""
-                            multiplier *= upgrades.filter(upgrade => upgrade.name == r)[0].multiplier
-                        }
+                let multiplier = 1
+                if (b !== undefined) {
+                    for (let i = 0; i < b.length; i++) {
+                        let r = b[i] || ""
+                        multiplier *= upgrades.filter(upgrade => upgrade.name === r)[0].multiplier
                     }
-                let prod = generators.filter(generate => generate.name == "Script")[0].production * (gencounts.get("Script") || 0) * multiplier * bonus
+                }
+                let prod = generators.filter(generate => generate.name === "Script")[0].production * (gencounts.get("Script") || 0) * multiplier * bonus
                 setCurrency((currency) => (currency + (prod / 30)))
                 setLPS(prod)
             }
@@ -109,10 +109,10 @@ export function MainLoop() {
         return () => {
             clearInterval(interval);
         };
-    }, [bonus]);
+    }, [bonus, gencounts, setCurrency, setGenerators, setLPS, upgradesf]);
 
     return (
-        <div />
+        <div/>
     )
 }
 
