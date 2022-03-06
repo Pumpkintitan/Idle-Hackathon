@@ -4,10 +4,12 @@ import { useUpgrades } from '../hooks/upgrades/Upgrades';
 import { useGenerators } from '../hooks/upgrades/Generators';
 import { generators } from '../datatypes/generator'
 import { upgrades } from '../datatypes/upgrade'
+import { useLinesPerSec } from '../hooks/upgrades/LinesPerSec'
 
 export function MainLoop() {
     const [time, setTime] = useState(Date.now());
     const [, setCurrency] = useLinesOfCode();
+    const [, setLPS] = useLinesPerSec();
     const [upgradesf,] = useUpgrades();
     const [generatorsf, setGenerators] = useGenerators();
 
@@ -16,6 +18,7 @@ export function MainLoop() {
         const interval = setInterval(() => {
             setTime(Date.now())
             let multiplier = 1
+            let persec = 0
             if (upgradesf.length != 0) {
                 upgradesf.forEach((key: string) => {
                     multiplier *= upgrades.filter(upgrade => upgrade.name == key)[0].multiplier || 1
@@ -23,9 +26,11 @@ export function MainLoop() {
             }
             if (generatorsf.size != 0) {
                 generatorsf.forEach((value: number, key: string) => {
-                    setCurrency((currency) => (currency + ((generators.filter(generate => generate.name == key)[0].production) * value * multiplier)))
+                    setCurrency((currency) => (currency + (((generators.filter(generate => generate.name == key)[0].production) * value * multiplier)/30)))
+                    persec += ((generators.filter(generate => generate.name == key)[0].production) * value * multiplier)
                 });
             }
+            setLPS(persec)
         }, (1000/30));
         return () => {
             clearInterval(interval);
