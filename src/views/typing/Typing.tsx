@@ -1,4 +1,3 @@
-import {Section} from "../../components/paper/Section";
 import React from 'react';
 import {Grid, TextField} from "@mui/material";
 import {useLinesOfCode} from "../../hooks/stats/LinesOfCode";
@@ -14,10 +13,8 @@ export function Typing() {
     };
 
     return (
-        <Section title={'Typing'} xs={12}>
-            <Grid container item xs={12} padding={2}>
-                <TextField variant="outlined" onChange={handleChange} label="Line" fullWidth/>
-            </Grid>
-        </Section>
+        <Grid container item xs={12} padding={2}>
+            <TextField variant="outlined" onChange={handleChange} label="Line" fullWidth/>
+        </Grid>
     )
 }

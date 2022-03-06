@@ -110,7 +110,7 @@ function GeneratorListItem(props: Generator) {
                     </Avatar>
                 </ListItemAvatar>
                 <ListItemText
-                    primary={`${generator.name} (${Math.floor(generators.get(generator.name) || 0)})`}
+                    primary={`${generator.name} (${numberConverter(Math.floor(generators.get(generator.name) || 0))})`}
                     secondary={`${numberConverter(generator.cost)} LOC`}
                 />
             </ListItem>
