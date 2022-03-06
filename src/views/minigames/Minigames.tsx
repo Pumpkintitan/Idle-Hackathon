@@ -75,7 +75,7 @@ export function Minigames() {
                 padding: 1,
             }}>
                 <Typography variant={'subtitle1'} sx={{marginTop: 4, marginBottom: 4}}>
-                    You have 5 tries to guess this 5 letter word for a bonus multiplier.
+                    You have 5 tries to guess this 5 letter word for a production bonus multiplier.
                 </Typography>
                 <Typography variant={'subtitle1'}>
                     Tries Left: {triesLeft}
