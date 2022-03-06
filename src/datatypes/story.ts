@@ -9,7 +9,7 @@ export const story: StoryText[] = [
         locneeded:0
     },
     {
-        text: "You can now write your first script! Click the +1 button to buy one. Scripts automatically procude 1 line per second.",
+        text: "You can now write your first script! Click the +1 button to buy one. Scripts automatically produce 1 line per second.",
         locneeded:10
     },
     {
@@ -21,7 +21,7 @@ export const story: StoryText[] = [
         locneeded:80
     },
     {
-        text: "You can buy upgrades by clicking the icons under the generator you want to upgrade.",
+        text: "You can buy upgrades by clicking the icons under the generator you want to upgrade. You unlock upgrades by manually buying generators so remember to keep buying them yourself!",
         locneeded:200
     },
     {
