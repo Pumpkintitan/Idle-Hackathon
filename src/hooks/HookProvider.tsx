@@ -4,6 +4,7 @@ import { mainTheme } from "./styles/Theme";
 import { LinesOfCodeContext } from "./stats/LinesOfCode";
 import { UpgradesContext } from "./upgrades/Upgrades";
 import { GeneratorsContext } from "./upgrades/Generators";
+import { LinesPerSecContext } from './upgrades/LinesPerSec';
 
 export function HookProvider(props: { children: React.ReactElement | React.ReactChildren }) {
     return (
@@ -11,8 +12,10 @@ export function HookProvider(props: { children: React.ReactElement | React.React
             <LinesOfCodeContext.Provider value={React.useState(0)}> {/*TODO: Load value from cookie later*/}
                 <UpgradesContext.Provider value={React.useState<string[]>([])}>
                     <GeneratorsContext.Provider value={React.useState<Map<string, number>>(new Map())}>
-                        <CssBaseline key="css-baseline" />
-                        {props.children}
+                        <LinesPerSecContext.Provider value={React.useState(0)}>
+                            <CssBaseline key="css-baseline" />
+                            {props.children}
+                        </LinesPerSecContext.Provider>
                     </GeneratorsContext.Provider>
                 </UpgradesContext.Provider>
             </LinesOfCodeContext.Provider>

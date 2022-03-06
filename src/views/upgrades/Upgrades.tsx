@@ -67,8 +67,8 @@ function GeneratorListItem(props: Generator) {
                     flexDirection: 'row-reverse'
                 }}
             >
-                {generatorUpgrades.map((upgrade: Upgrade) => <UpgradeListItem {... upgrade} />)}
-            
+                {generatorUpgrades.map((upgrade: Upgrade) => <UpgradeListItem key={upgrade.name} {...upgrade} />)}
+
             </ListItem>
         </>
     )
@@ -77,8 +77,8 @@ function GeneratorListItem(props: Generator) {
 export function GeneratorList() {
     return (
         <Section title={'Geneartors'} xs={12}>
-            <List sx={{width: '100%', height: '100%', overflow: 'scroll'}}>
-                {generators.map((generator: Generator) => <GeneratorListItem {... generator} />)}
+            <List sx={{width: '100%', height: '80vh', overflow: 'scroll'}}>
+                {generators.map((generator: Generator) => <GeneratorListItem key={generator.name} {...generator} />)}
             </List>
         </Section>
     )
