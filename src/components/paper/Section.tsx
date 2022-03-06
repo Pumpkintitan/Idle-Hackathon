@@ -12,10 +12,19 @@ export function Section(props: {
     title?: string,
     disablePadding?: boolean
 } & GridProps) {
+    const {
+        children,
+        fill,
+        h,
+        outline,
+        pad,
+        title,
+        disablePadding,
+        ...gridprops
+    } = props
 
-    const theme: ExtendedTheme = useTheme()
     return (
-        <Grid item {...props}>
+        <Grid item {...gridprops}>
             <Paper variant={'outlined'} sx={{
                 // borderColor: theme.palette.outline.main,
                 borderColor: undefined,
@@ -32,7 +41,7 @@ export function Section(props: {
                                 <Typography variant={'h6'} align={'left'} color={'text.secondary'}
                                             sx={{fontWeight: 500}}
                                 >
-                                    {props.title}
+                                    {title}
                                 </Typography>
                             </Grid>
                             <Grid item spacing={2} xs={12}>
@@ -40,7 +49,7 @@ export function Section(props: {
                             </Grid>
                         </Grid>
                     }
-                    {props.children}
+                    {children}
                 </Grid>
             </Paper>
         </Grid>
