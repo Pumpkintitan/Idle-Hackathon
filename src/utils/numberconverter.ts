@@ -45,6 +45,10 @@ export function numberConverter (labelValue: number) {
 
     ? Math.trunc(labelValue).toLocaleString('en-us')
 
+    : Math.abs(Number(labelValue)) == 0
+
+    ? Math.trunc(labelValue)
+
     : labelValue.toFixed(1);
 
 }
