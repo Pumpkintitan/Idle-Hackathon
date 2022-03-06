@@ -1,6 +1,6 @@
 import React from "react";
 
-export const UpgradesContext = React.createContext<[string[], React.Dispatch<React.SetStateAction<string[]>>] | null>(null);
+export const UpgradesContext = React.createContext<[Map<string, string[]>, React.Dispatch<React.SetStateAction<Map<string, string[]>>>] | null>(null);
 
 export const useUpgrades = () => {
     let val = React.useContext(UpgradesContext)
