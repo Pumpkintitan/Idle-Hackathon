@@ -26,8 +26,9 @@ export function MainLoop() {
             }
             if (generatorsf.size != 0) {
                 generatorsf.forEach((value: number, key: string) => {
-                    setCurrency((currency) => (currency + (((generators.filter(generate => generate.name == key)[0].production) * value * multiplier)/30)))
-                    persec += ((generators.filter(generate => generate.name == key)[0].production) * value * multiplier)
+                    let prod = generators.filter(generate => generate.name == key)[0].production * value * multiplier
+                    setCurrency((currency) => (currency + (prod/30)))
+                    persec += prod
                 });
             }
             setLPS(persec)
