@@ -10,7 +10,7 @@ import { MainLoop } from "../../mainloop/MainLoop";
 
 export function GamePage() {
     return (
-        <ContainerGrid sidebarOpen={true} maxWidth={'xl'}>
+        <ContainerGrid maxWidth={'xl'}>
             {/*<HeaderTitle>*/}
             {/*    Epic Game*/}
             {/*</HeaderTitle>*/}
@@ -18,14 +18,11 @@ export function GamePage() {
             <Grid container justifyContent={'center'} spacing={2} height={'90vh'} sx={{paddingLeft: 4}}>
                 <Grid item container spacing={2} xs={8}>
                     <Grid item xs={4} container spacing={2}>
-                        <Story/>
+                        <Minigames/>
                     </Grid>
                     <Grid item xs={8} container spacing={2}>
                         <Stats/>
-                        <Typing/>
-                    </Grid>
-                    <Grid item xs={12} container spacing={2}>
-                        <Minigames/>
+                        {/*<Typing/>*/}
                     </Grid>
                 </Grid>
                 <Grid item xs={4} container spacing={2}>

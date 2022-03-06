@@ -41,6 +41,6 @@ export function numberConverter (labelValue: number) {
 
     ? (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(3) + "M"
 
-    : Math.abs(Number(labelValue));
+    : Math.trunc(labelValue).toLocaleString('en-us');
 
 }

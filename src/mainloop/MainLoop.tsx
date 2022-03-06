@@ -11,14 +11,14 @@ export function MainLoop() {
     const [, setCurrency] = useLinesOfCode();
     const [, setLPS] = useLinesPerSec();
     const [upgradesf,] = useUpgrades();
-    const [generatorsf, setGenerators] = useGenerators();
+    const [gencounts, setGenerators] = useGenerators();
 
 
     useEffect(() => {
         const interval = setInterval(() => {
             setTime(Date.now())
-            if (generatorsf.size != 0) {
-                if (generatorsf.get("Quantum Technology") != undefined) {
+            if (gencounts.size != 0) {
+                if (gencounts.get("Quantum Technology") != undefined) {
                     let b = upgradesf.get("Quantum Technology")
                     let multiplier = 1
                     if (b != undefined) {
@@ -28,12 +28,12 @@ export function MainLoop() {
                         }
                     }
                     setGenerators((generator) => {
-                        generator.set("Startup Incubator", (generator.get("Startup Incubator") || 0) + multiplier * (generatorsf.get("Quantum Technology") || 1) / 30);
+                        generator.set("Startup Incubator", (generator.get("Startup Incubator") || 0) + multiplier * (gencounts.get("Quantum Technology") || 1) / 30);
                         return generator;
                     })
                 }
 
-                if (generatorsf.get("Startup Incubator") != undefined) {
+                if (gencounts.get("Startup Incubator") != undefined) {
                     let b = upgradesf.get("Startup Incubator")
                     let multiplier = 1
                     if (b != undefined) {
@@ -43,12 +43,12 @@ export function MainLoop() {
                         }
                     }
                     setGenerators((generator) => {
-                        generator.set("Startup", (generator.get("Startup") || 0) + multiplier * (generatorsf.get("Startup Incubator") || 1) / 30);
+                        generator.set("Startup", (generator.get("Startup") || 0) + multiplier * (gencounts.get("Startup Incubator") || 1) / 30);
                         return generator;
                     })
                 }
 
-                if (generatorsf.get("Startup") != undefined) {
+                if (gencounts.get("Startup") != undefined) {
                     let b = upgradesf.get("Startup")
                     let multiplier = 1
                     if (b != undefined) {
@@ -58,12 +58,12 @@ export function MainLoop() {
                         }
                     }
                     setGenerators((generator) => {
-                        generator.set("Cloud Service", (generator.get("Cloud Service") || 0) + multiplier * (generatorsf.get("Startup") || 1) / 30);
+                        generator.set("Cloud Service", (generator.get("Cloud Service") || 0) + multiplier * (gencounts.get("Startup") || 1) / 30);
                         return generator;
                     })
                 }
 
-                if (generatorsf.get("Cloud Service") != undefined) {
+                if (gencounts.get("Cloud Service") != undefined) {
                     let b = upgradesf.get("Cloud Service")
                     let multiplier = 1
                     if (b != undefined) {
@@ -73,11 +73,11 @@ export function MainLoop() {
                         }
                     }
                     setGenerators((generator) => {
-                        generator.set("GPU Acceleration", (generator.get("GPU Acceleration") || 0) + multiplier * (generatorsf.get("Cloud Service") || 1) / 30);
+                        generator.set("GPU Acceleration", (generator.get("GPU Acceleration") || 0) + multiplier * (gencounts.get("Cloud Service") || 1) / 30);
                         return generator;
                     })
                 }
-                if (generatorsf.get("GPU Acceleration") != undefined) {
+                if (gencounts.get("GPU Acceleration") != undefined) {
                     let b = upgradesf.get("GPU Acceleration")
                     let multiplier = 1
                     if (b != undefined) {
@@ -87,7 +87,7 @@ export function MainLoop() {
                         }
                     }
                     setGenerators((generator) => {
-                        generator.set("Script", (generator.get("Script") || 0) + multiplier * (generatorsf.get("GPU Acceleration") || 1) / 30);
+                        generator.set("Script", (generator.get("Script") || 0) + multiplier * (gencounts.get("GPU Acceleration") || 1) / 30);
                         return generator;
                     })
                 }
@@ -100,7 +100,7 @@ export function MainLoop() {
                             multiplier *= upgrades.filter(upgrade => upgrade.name == r)[0].multiplier
                         }
                     }
-                let prod = generators.filter(generate => generate.name == "Script")[0].production * (generatorsf.get("Script") || 0) * multiplier
+                let prod = generators.filter(generate => generate.name == "Script")[0].production * (gencounts.get("Script") || 0) * multiplier
                 setCurrency((currency) => (currency + (prod / 30)))
                 setLPS(prod)
             }

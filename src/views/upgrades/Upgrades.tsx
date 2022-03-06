@@ -18,7 +18,11 @@ import {useLinesOfCode} from "../../hooks/stats/LinesOfCode";
 import {BuyButton} from "../../components/button/BuyButton";
 import {ExtendedTheme} from "../../hooks/styles/Theme";
 import {useUpgrades} from "../../hooks/upgrades/Upgrades";
+<<<<<<< HEAD
 import clsx from 'clsx';
+=======
+import { numberConverter } from "../../utils/numberconverter";
+>>>>>>> 04539ab747e3cde9e5f6037ace235b61abeb5c83
 
 function UpgradeListItem(props: Upgrade & {associatedGenerator: string}) {
 
@@ -136,8 +140,8 @@ function GeneratorListItem(props: Generator) {
                     </Avatar>
                 </ListItemAvatar>
                 <ListItemText
-                    primary={`${generator.name} (${Math.floor(generators.get(generator.name) || 0)})`}
-                    secondary={`${generator.cost} LOC`}
+                    primary={`${generator.name} (${numberConverter(Math.floor(generators.get(generator.name) || 0))})`}
+                    secondary={`${numberConverter(generator.cost)} LOC`}
                 />
             </ListItem>
             <ListItem
@@ -158,7 +162,7 @@ export function GeneratorList() {
     const theme: ExtendedTheme = useTheme()
 
     return (
-        <Section title={'Geneartors'} xs={12}>
+        <Section title={'Generators'} xs={12}>
             <List sx={{
                 width: '100%', height: '80vh', overflow: 'scroll',
                 '& > :nth-child(even)': {
