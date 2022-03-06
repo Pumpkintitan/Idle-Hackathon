@@ -22,16 +22,7 @@ import {useUpgrades} from "../../hooks/upgrades/Upgrades";
 import {numberConverter} from "../../utils/numberconverter";
 import { Buyable } from "../../datatypes/buyable";
 
-// const colors: {
-//     [count: number]: string
-// } = {
-//     10: "#CCC",
-//     25: "#2b5752",
-//     50: "#a6a428",
-//     100: "#ae12c5",
-// }
-
-function UpgradeTooltipBody(props: { upgrade: Buyable }) {
+function UpgradeTooltipBody(props: { upgrade: Upgrade, associatedGenerator: string, purchased: boolean}) {
     const theme: ExtendedTheme = useTheme()
 
     return (
@@ -57,8 +48,63 @@ function UpgradeTooltipBody(props: { upgrade: Buyable }) {
                 <Typography variant={'body1'}>
                     {props.upgrade.name}
                 </Typography>
-                <Typography variant={'body2'}>
+                <Typography variant={'subtitle2'}>
+                    ({ props.purchased ? "Owned" : `Purchase for ${props.upgrade.cost} LoC`})
+                </Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <Typography variant={'subtitle1'}>
                     {props.upgrade.description}
+                </Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <Typography variant={'subtitle2'}>
+                    Improves {props.associatedGenerator} production by {props.upgrade.multiplier}x
+                </Typography>
+            </Grid>
+        </Grid>
+    )
+}
+
+function GeneartorTooltipBody(props: { generator: Generator, owned: number }) {
+    const theme: ExtendedTheme = useTheme()
+
+    return (
+        <Grid container spacing={1} padding={1} columns={{xs: 2, md: 12}}>
+            <Grid item xs={3}>
+                <Avatar variant={'rounded'}
+                        sx={{
+                            background: "none",
+                            color: theme.palette.secondary.main,
+                            fontSize: '45px',
+                            width: '50px',
+                            height: '50px',
+                            backgroundSize: 'cover',
+                            '& > *': {
+                                fontSize: "inherit"
+                            },
+                        }}
+                >
+                    {props.generator.icon}
+                </Avatar>
+            </Grid>
+            <Grid item xs={9}>
+                <Typography variant={'body1'}>
+                    {props.generator.name}
+                </Typography>
+                <Typography variant={'subtitle2'}>
+                    {/* ({ true == true ? "Owned" : `Purchase for ${props.generator.cost} LoC`}) */}
+                    (Manually Purchaed {props.owned})
+                </Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <Typography variant={'subtitle1'}>
+                    {props.generator.description}
+                </Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <Typography variant={'subtitle1'}>
+                    {props.generator.name} produces {props.generator.production} LoC/second.
                 </Typography>
             </Grid>
         </Grid>
@@ -84,7 +130,7 @@ function UpgradeListItem(props: Upgrade & { associatedGenerator: string }) {
     }
 
     return (
-        <Tooltip title={<UpgradeTooltipBody upgrade={upgrade}/>} arrow>
+        <Tooltip title={<UpgradeTooltipBody upgrade={upgrade} associatedGenerator={props.associatedGenerator} purchased={(upgradesPurchased.get(props.associatedGenerator) || []).includes(upgrade.name)}/>} arrow>
             <span>
                 <IconButton
                     onClick={() => buyUpgrade(props.associatedGenerator, upgrade.name, upgrade.cost)}
@@ -166,7 +212,7 @@ function GeneratorListItem(props: Generator) {
             >
                 <ListItemAvatar>
 
-                    <Tooltip title={<UpgradeTooltipBody upgrade={generator}/>} arrow>
+                    <Tooltip title={<GeneartorTooltipBody generator={generator} owned={(manualGenerators.get(generator.name) || 0)}/>} arrow>
                         <Avatar variant={'rounded'}
                                 sx={(generators.has(generator.requisites || "")) || generator.requisites == null ? {
                                     width: "60px",
@@ -190,7 +236,7 @@ function GeneratorListItem(props: Generator) {
                 </ListItemAvatar>
                 <ListItemText
                     primary={`${generator.name} (${numberConverter(Math.floor(generators.get(generator.name) || 0))})`}
-                    secondary={`${numberConverter(generator.cost * Math.pow(1.05, (manualGenerators.get(generator.name) || 0)))} LOC`}
+                    secondary={`${numberConverter(generator.cost * Math.pow(1.05, (manualGenerators.get(generator.name) || 0)))} LoC`}
                 />
             </ListItem>
             <ListItem
@@ -212,7 +258,7 @@ export function GeneratorList() {
     const theme: ExtendedTheme = useTheme()
 
     return (
-        <Section title={'Generators'} xs={12}>
+        <Section title={'Code Writing Automation'} xs={12}>
             <List sx={{
                 width: '100%', height: '80vh', overflow: 'scroll',
                 '& > :nth-child(even)': {
