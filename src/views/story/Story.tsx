@@ -8,8 +8,7 @@ import {ExtendedTheme} from "../../hooks/styles/Theme";
 export function Story() {
     const [messages,] = useMessages()
     const theme: ExtendedTheme = useTheme()
-    console.log(messages)
-
+    
     return (
         <Section title={'Story'} xs={12}>
             <List sx={{
