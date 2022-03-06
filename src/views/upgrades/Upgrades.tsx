@@ -17,8 +17,12 @@ import {Generator, generators} from "../../datatypes/generator";
 import {useLinesOfCode} from "../../hooks/stats/LinesOfCode";
 import {BuyButton} from "../../components/button/BuyButton";
 import {ExtendedTheme} from "../../hooks/styles/Theme";
+import { Buyable } from "../../datatypes/buyable"
+import { useUpgrades } from "../../hooks/upgrades/Upgrades";
+import FolderIcon from '@mui/icons-material/Folder';
 
 function UpgradeListItem(props: Upgrade) {
+    
     const upgrade = props;
     const theme = useTheme();
     return (
@@ -46,8 +50,8 @@ function UpgradeListItem(props: Upgrade) {
 function GeneratorListItem(props: Generator) {
     const theme = useTheme();
 
-    const [generators, setGenerators] = useGenerators()
-
+    const [generators, setGenerators] = useGenerators();
+    const [upgradesAvailable, setUpgrades] = useUpgrades();
     const [currency, setCurrency] = useLinesOfCode();
 
     const buyGenerator = (name: string, value: number, cost: number) => {
@@ -60,6 +64,7 @@ function GeneratorListItem(props: Generator) {
 
     const generator = props;
     const generatorUpgrades = upgrades.filter((upgrade: Upgrade) => generator.upgrades.includes(upgrade.name));
+    
     return (
         <>
             <ListItem
@@ -79,19 +84,19 @@ function GeneratorListItem(props: Generator) {
             >
                 <ListItemAvatar>
                     <Avatar variant={'rounded'}
-                            sx={{
-                                width: "50px",
-                                height: "50px",
-                                '& > *': {
-                                    width: "42px",
-                                    height: "42px"
-                                },
-                                background: "none",
-                                color: theme.palette.primary.light,
-                                '&.Mui-disabled': {
-                                    color: theme.palette.primary.main
-                                }
-                            }}
+                        sx={{
+                            width: "50px",
+                            height: "50px",
+                            '& > *': {
+                              width: "45px",
+                              height: "45px"
+                            },
+                            background: "none",
+                            color: theme.palette.primary.light,
+                            '&.Mui-disabled': {
+                                color: theme.palette.primary.main
+                            }
+                        }}
                     >
                         {generator.icon}
                     </Avatar>
