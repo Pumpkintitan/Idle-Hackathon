@@ -38,14 +38,14 @@ export const story: StoryText[] = [
     },
     {
         text: "This hackathon is going very well for you so you start to research Quantum technology.",
-        locneeded:10000000000000
+        locneeded:1000000000000
     },
     {
         text: "The hackathon is coming to an end but you are just on the cusp of figuring out how to implement Quantum technology.",
-        locneeded:1000000000000000
+        locneeded:10000000000000
     },
     {
         text: "Finally! The moment is here to start up your new technology and get first place at the hackathon!",
-        locneeded:100000000000000000
+        locneeded:100000000000000
     },
 ]
