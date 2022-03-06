@@ -25,7 +25,6 @@ function GeneratorListItem(props: Generator) {
 
     const buyGenerator = (name: string, value: number) => {setGenerators((generator) => {
         generator.set(name, (generator.get(name) || 0)+ value)
-        console.log(generator)
         return generator
     })}
     const generator = props;
