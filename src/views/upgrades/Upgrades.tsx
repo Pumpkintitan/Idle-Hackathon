@@ -48,7 +48,9 @@ function UpgradeTooltipBody(props: { upgrade: Upgrade, associatedGenerator: stri
                 <Typography variant={'body1'}>
                     {props.upgrade.name}
                 </Typography>
-                <Typography variant={'subtitle2'}>
+                <Typography variant={'subtitle2'}
+                    sx={{fontSize: "9pt"}}
+                >
                     ({ props.purchased ? "Owned" : `Purchase for ${props.upgrade.cost} LoC`})
                 </Typography>
             </Grid>
@@ -58,7 +60,9 @@ function UpgradeTooltipBody(props: { upgrade: Upgrade, associatedGenerator: stri
                 </Typography>
             </Grid>
             <Grid item xs={12}>
-                <Typography variant={'subtitle2'}>
+                <Typography variant={'subtitle2'}
+                    sx={{fontSize: "9pt"}}
+                >
                     Improves {props.associatedGenerator} production by {props.upgrade.multiplier}x
                 </Typography>
             </Grid>
@@ -92,8 +96,9 @@ function GeneartorTooltipBody(props: { generator: Generator, owned: number }) {
                 <Typography variant={'body1'}>
                     {props.generator.name}
                 </Typography>
-                <Typography variant={'subtitle2'}>
-                    {/* ({ true == true ? "Owned" : `Purchase for ${props.generator.cost} LoC`}) */}
+                <Typography variant={'subtitle2'}
+                    sx={{fontSize: "9pt"}}
+                >
                     (Manually Purchaed {props.owned})
                 </Typography>
             </Grid>
@@ -103,7 +108,9 @@ function GeneartorTooltipBody(props: { generator: Generator, owned: number }) {
                 </Typography>
             </Grid>
             <Grid item xs={12}>
-                <Typography variant={'subtitle1'}>
+                <Typography variant={'subtitle1'}
+                    sx={{fontSize: "9pt"}}
+                >
                     {props.generator.name} produces {props.generator.production} LoC/second.
                 </Typography>
             </Grid>
