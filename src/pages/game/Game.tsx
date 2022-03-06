@@ -13,7 +13,7 @@ export function GamePage() {
             <MainLoop/>
             <Grid container justifyContent={'center'} spacing={2} height={'90vh'} sx={{paddingLeft: 4}}>
                 <Grid item container spacing={2} md={8} xs={12}>
-                    <Grid item md={4} container spacing={2} xs={12}>
+                    <Grid item md={4} container spacing={1} xs={12}>
                         <Minigames/>
                         <Story/>
                     </Grid>

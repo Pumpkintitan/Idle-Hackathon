@@ -12,6 +12,7 @@ export function Story() {
         <Grid container>
             <List sx={{
                 height: '30vh', overflowY: 'scroll', width: '100%',
+                marginTop: 2,
                 '& > *': {
                     borderBottom: `1px solid ${theme.palette.outline.main}`,
                     borderTop: `none`,
