@@ -1,6 +1,6 @@
 import {Section} from "../../components/paper/Section";
 import React from 'react';
-import {useGenerators} from "../../hooks/upgrades/Generators";
+import {useGenerators, useManualGenerators} from "../../hooks/upgrades/Generators";
 import {
     Avatar,
     ButtonGroup,
@@ -29,8 +29,10 @@ function UpgradeListItem(props: Upgrade) {
             <IconButton>
                 <Avatar variant={'rounded'}
                         sx={{
+                            width: "18px",
+                            height: "18px",
                             '& > *': {
-                                width: "15px"
+                                width: "18px"
                             },
                             background: "none",
                             color: theme.palette.primary.light,
@@ -50,6 +52,7 @@ function GeneratorListItem(props: Generator) {
     const theme = useTheme();
 
     const [generators, setGenerators] = useGenerators();
+    const [manualGenerators, setManualGenerators] = useManualGenerators();
     const [upgradesAvailable, setUpgrades] = useUpgrades();
     const [currency, setCurrency] = useLinesOfCode();
 
@@ -58,11 +61,17 @@ function GeneratorListItem(props: Generator) {
             generator.set(name, (generator.get(name) || 0) + value)
             setCurrency((oldValue) => oldValue - cost * value);
             return generator
-        })
+        });
+        setManualGenerators((generator) => {
+            generator.set(name, (generator.get(name) || 0) + value)
+            return generator
+        });
     }
 
     const generator = props;
-    const generatorUpgrades = upgrades.filter((upgrade: Upgrade) => generator.upgrades.includes(upgrade.name));
+    const generatorUpgrades = upgrades.filter((upgrade: Upgrade) => {
+       return generator.upgrades.includes(upgrade.name) && ((manualGenerators.get(generator.name) || 0) >= upgrade.generatorsRequired)
+    });
 
     return (
         <>
