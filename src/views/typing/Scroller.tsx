@@ -27,7 +27,7 @@ export function Scroller() {
                 return [index + 1, lineNo]
             })
 
-        }, (1000 / (speed + 1)));
+        }, (1000 / 8));
         return () => {
             clearInterval(interval);
         };
