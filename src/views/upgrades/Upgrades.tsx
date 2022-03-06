@@ -20,17 +20,18 @@ import {BuyButton} from "../../components/button/BuyButton";
 import {ExtendedTheme} from "../../hooks/styles/Theme";
 import {useUpgrades} from "../../hooks/upgrades/Upgrades";
 import {numberConverter} from "../../utils/numberconverter";
+import { Buyable } from "../../datatypes/buyable";
 
-const colors: {
-    [count: number]: string
-} = {
-    10: "#CCC",
-    25: "#2b5752",
-    50: "#a6a428",
-    100: "#ae12c5",
-}
+// const colors: {
+//     [count: number]: string
+// } = {
+//     10: "#CCC",
+//     25: "#2b5752",
+//     50: "#a6a428",
+//     100: "#ae12c5",
+// }
 
-function UpgradeTooltipBody(props: { upgrade: Upgrade }) {
+function UpgradeTooltipBody(props: { upgrade: Buyable }) {
     const theme: ExtendedTheme = useTheme()
 
     return (
@@ -38,8 +39,8 @@ function UpgradeTooltipBody(props: { upgrade: Upgrade }) {
             <Grid item xs={3}>
                 <Avatar variant={'rounded'}
                         sx={{
-                            background: colors[props.upgrade.generatorsRequired] || '#FFF',
-                            color: '#000',
+                            background: "none",
+                            color: theme.palette.secondary.main,
                             fontSize: '45px',
                             width: '50px',
                             height: '50px',
@@ -164,25 +165,28 @@ function GeneratorListItem(props: Generator) {
                 }
             >
                 <ListItemAvatar>
-                    <Avatar variant={'rounded'}
-                            sx={(generators.has(generator.requisites || "")) || generator.requisites == null ? {
-                                width: "60px",
-                                height: "60px",
-                                '& > *': {
-                                    width: "50px",
-                                    height: "50px"
-                                },
-                                background: "none",
-                                color: theme.palette.primary.main
-                            } : {
-                                width: "60px",
-                                height: "60px",
-                                background: "none",
-                                color: theme.palette.primary.light
-                            }}
-                    >
-                        {generator.icon}
-                    </Avatar>
+
+                    <Tooltip title={<UpgradeTooltipBody upgrade={generator}/>} arrow>
+                        <Avatar variant={'rounded'}
+                                sx={(generators.has(generator.requisites || "")) || generator.requisites == null ? {
+                                    width: "60px",
+                                    height: "60px",
+                                    '& > *': {
+                                        width: "50px",
+                                        height: "50px"
+                                    },
+                                    background: "none",
+                                    color: theme.palette.primary.main
+                                } : {
+                                    width: "60px",
+                                    height: "60px",
+                                    background: "none",
+                                    color: theme.palette.primary.light
+                                }}
+                        >
+                            {generator.icon}
+                        </Avatar>
+                    </Tooltip>
                 </ListItemAvatar>
                 <ListItemText
                     primary={`${generator.name} (${numberConverter(Math.floor(generators.get(generator.name) || 0))})`}
