@@ -1,8 +1,8 @@
 import {Section} from "../../components/paper/Section";
 import React from 'react';
-import {List} from "@mui/material";
-import { useLinesOfCode } from "../../hooks/stats/LinesOfCode";
-import { useLinesPerSec } from '../../hooks/upgrades/LinesPerSec'
+import {useLinesOfCode} from "../../hooks/stats/LinesOfCode";
+import {useLinesPerSec} from '../../hooks/upgrades/LinesPerSec'
+import {Grid} from "@mui/material";
 
 export function Stats() {
     const [currency] = useLinesOfCode();
@@ -10,9 +10,9 @@ export function Stats() {
 
     return (
         <Section title={'Stats'} xs={12}>
-            <List>
-                {Math.trunc( currency )} -- {lps} Lines per Second
-            </List>
+            <Grid item xs={12} container padding={2}>
+                {Math.trunc(currency)} -- {lps} Lines per Second
+            </Grid>
         </Section>
     )
 }
