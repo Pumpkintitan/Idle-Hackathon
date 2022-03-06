@@ -11,19 +11,19 @@ export function Minigames() {
     const [wrongPos, setWrongPos] = useState<string>("")
     const [displayWord, setDisplayWord] = useState<string>("-----")
     const [btext, setbtext] = useState<string>("")
-
-
+    const [miniGameActive, setMiniGameActive] = useState<boolean>(false)
     function setCharAt(str: string, index: number, chr: string) {
         if (index > str.length - 1) return str;
         return str.substring(0, index) + chr + str.substring(index + 1);
     }
-
-    const [, setBonus] = useMiniGameBonus()
+    console.log(word)
+    const [bonus, setBonus] = useMiniGameBonus()
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.value.length === 5) {
             let guess = event.target.value
             if (guess === word) {
                 setBonus(7)
+                setMiniGameActive(true)
                 setbtext((bt) => "Correct! x7 production!")
                 setTriesLeft((tl) => 5)
                 setWord((word) => WORDS[Math.floor(Math.random() * WORDS.length)])
@@ -31,8 +31,9 @@ export function Minigames() {
                 setDisplayWord((dw) => "-----")
                 setTimeout(() => {
                     setBonus(1)
+                    setMiniGameActive(false)
                     setbtext((bt) => "")
-                  }, 30000);
+                  }, 10000);
             }
             else {
                 for (let i = 0; i < guess.length; i++) {
@@ -65,9 +66,7 @@ export function Minigames() {
                 }
             }
             event.target.value = ""
-
         }
-        console.log(displayWord)
     };
     return (
         <Section title={'Minigames'} xs={12}>
@@ -90,7 +89,7 @@ export function Minigames() {
                 <Grid container spacing={0.5} justifyContent={'center'} sx={{marginTop: 3}}>
                     {[0,1,2,3,4].map((i) => (
                         <Grid item xs={2} key={1}>
-                            <Paper key={i} sx={{backgroundColor: '#666'}}>
+                            <Paper sx={{backgroundColor: '#666'}}>
                                 <Typography variant={'h4'} align={'center'}>
                                     {displayWord[i]}
                                 </Typography>
@@ -98,7 +97,7 @@ export function Minigames() {
                         </Grid>
                     ))}
                 </Grid>
-                <TextField variant="outlined" onChange={handleChange} label="Guess" fullWidth sx={{marginTop: 3}}/>
+                <TextField variant="outlined" onChange={handleChange} label="Guess" fullWidth sx={{marginTop: 3}} disabled={miniGameActive}/>
             </Box>
         </Section>
     )
