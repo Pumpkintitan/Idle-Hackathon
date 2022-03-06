@@ -11,12 +11,16 @@ export function Stats() {
     return (
         <Section title={'Stats'} xs={12}>
             <Grid item xs={12} container padding={2}>
-                <Typography variant={'h3'}>
-                    {Math.trunc(currency).toLocaleString('en-us')} lines
-                </Typography>
-                <Typography variant={'h5'}>
-                    {Math.trunc(lps).toLocaleString('en-us')} Lines per Second
-                </Typography>
+                <Grid item xs={12}>
+                    <Typography variant={'h3'}>
+                        {Math.trunc(currency).toLocaleString('en-us')} lines
+                    </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                    <Typography variant={'h5'}>
+                        {Math.trunc(lps).toLocaleString('en-us')} Lines per Second
+                    </Typography>
+                </Grid>
             </Grid>
         </Section>
     )
