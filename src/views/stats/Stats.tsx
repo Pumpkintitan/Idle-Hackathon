@@ -11,7 +11,7 @@ export function Stats() {
     return (
         <Section title={'Stats'} xs={12}>
             <Grid item xs={12} container padding={2}>
-                {Math.trunc(currency)} -- {lps} Lines per Second
+            {Math.trunc( currency )} -- {Math.trunc(lps)} Lines per Second
             </Grid>
         </Section>
     )
