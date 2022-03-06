@@ -50,7 +50,7 @@ export const upgrades: Upgrade[] = [
         cost: 100,
         icon: <TableRow />,
         requisites: null,
-        description: "",
+        description: "Super cool epic multiline description",
         multiplier: 1.25,
         generatorsRequired: 10
     },
@@ -114,13 +114,13 @@ export const upgrades: Upgrade[] = [
         name: "Order New Units",
         cost: 100,
         icon: <PackageVariantClosed />,
-        requisites: "Referbish Old Units",
+        requisites: "Download More RAM",
         description: "",
         multiplier: 1.25,
         generatorsRequired: 10
     },
     {
-        name: "Referbish Old Units",
+        name: "Download More RAM",
         cost: 100,
         icon: <WrenchOutline />,
         requisites: null,

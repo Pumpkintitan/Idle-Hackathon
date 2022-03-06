@@ -24,7 +24,7 @@ export const generators: Generator[] = [
         requisites: "Script",
         description: "",
         production: 10,
-        upgrades: ["Referbish Old Units", "Order New Units", "Combine Units", "Upgrade Cooling"]
+        upgrades: ["Download More RAM", "Order New Units", "Combine Units", "Upgrade Cooling"]
     },
     {
         name: "Cloud Service",

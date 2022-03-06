@@ -4,12 +4,13 @@ import {useGenerators, useManualGenerators} from "../../hooks/upgrades/Generator
 import {
     Avatar,
     ButtonGroup,
+    Grid,
     IconButton,
     List,
     ListItem,
     ListItemAvatar,
     ListItemText,
-    Tooltip,
+    Tooltip, Typography,
     useTheme
 } from "@mui/material";
 import {Upgrade, upgrades} from "../../datatypes/upgrade";
@@ -18,9 +19,52 @@ import {useLinesOfCode} from "../../hooks/stats/LinesOfCode";
 import {BuyButton} from "../../components/button/BuyButton";
 import {ExtendedTheme} from "../../hooks/styles/Theme";
 import {useUpgrades} from "../../hooks/upgrades/Upgrades";
-import { numberConverter } from "../../utils/numberconverter";
+import {numberConverter} from "../../utils/numberconverter";
 
-function UpgradeListItem(props: Upgrade & {associatedGenerator: string}) {
+const colors: {
+    [count: number]: string
+} = {
+    10: "#CCC",
+    25: "#2b5752",
+    50: "#a6a428",
+    100: "#ae12c5",
+}
+
+function UpgradeTooltipBody(props: { upgrade: Upgrade }) {
+    const theme: ExtendedTheme = useTheme()
+
+    return (
+        <Grid container spacing={1} padding={1}>
+            <Grid item xs={3}>
+                <Avatar variant={'rounded'}
+                        sx={{
+                            background: colors[props.upgrade.generatorsRequired] || '#FFF',
+                            color: '#000',
+                            fontSize: '45px',
+                            width: '50px',
+                            height: '50px',
+                            backgroundSize: 'cover',
+                            '& > *': {
+                                fontSize: "inherit"
+                            },
+                        }}
+                >
+                    {props.upgrade.icon}
+                </Avatar>
+            </Grid>
+            <Grid item xs={9}>
+                <Typography variant={'body1'}>
+                    {props.upgrade.name}
+                </Typography>
+                <Typography variant={'body2'}>
+                    {props.upgrade.description}
+                </Typography>
+            </Grid>
+        </Grid>
+    )
+}
+
+function UpgradeListItem(props: Upgrade & { associatedGenerator: string }) {
 
     const upgrade = props;
     const theme = useTheme();
@@ -31,7 +75,7 @@ function UpgradeListItem(props: Upgrade & {associatedGenerator: string}) {
         setUpgrades((upgrade) => {
             let updatedUpgrades = new Map(upgrade);
             let updatedList = updatedUpgrades.get(generatorName) || [];
-            
+
             updatedUpgrades.set(generatorName, updatedList.concat(upgradeName));
             setCurrency((oldValue) => oldValue - cost);
             return updatedUpgrades;
@@ -39,7 +83,7 @@ function UpgradeListItem(props: Upgrade & {associatedGenerator: string}) {
     }
 
     return (
-        <Tooltip title={upgrade.name} >
+        <Tooltip title={<UpgradeTooltipBody upgrade={upgrade}/>} arrow>
             <span>
                 <IconButton
                     onClick={() => buyUpgrade(props.associatedGenerator, upgrade.name, upgrade.cost)}
@@ -97,9 +141,9 @@ function GeneratorListItem(props: Generator) {
 
     const generator = props;
     const generatorUpgrades = upgrades.filter((upgrade: Upgrade) => {
-       return generator.upgrades.includes(upgrade.name) && 
-       ((manualGenerators.get(generator.name) || 0) >= upgrade.generatorsRequired) &&
-       ((upgradesPurchased.get(generator.name) || []).includes(upgrade.requisites || "") || upgrade.requisites == null)
+        return generator.upgrades.includes(upgrade.name) &&
+            ((manualGenerators.get(generator.name) || 0) >= upgrade.generatorsRequired) &&
+            ((upgradesPurchased.get(generator.name) || []).includes(upgrade.requisites || "") || upgrade.requisites == null)
     });
 
     return (
@@ -121,7 +165,7 @@ function GeneratorListItem(props: Generator) {
             >
                 <ListItemAvatar>
                     <Avatar variant={'rounded'}
-                            sx={ (generators.has(generator.requisites || "")) || generator.requisites == null ? {
+                            sx={(generators.has(generator.requisites || "")) || generator.requisites == null ? {
                                 width: "60px",
                                 height: "60px",
                                 '& > *': {
@@ -152,7 +196,8 @@ function GeneratorListItem(props: Generator) {
                     flexDirection: 'row-reverse'
                 }}
             >
-                {generatorUpgrades.map((upgrade: Upgrade) => <UpgradeListItem associatedGenerator={generator.name} key={upgrade.name} {...upgrade} />)}
+                {generatorUpgrades.map((upgrade: Upgrade) => <UpgradeListItem associatedGenerator={generator.name}
+                                                                              key={upgrade.name} {...upgrade} />)}
 
             </ListItem>
         </>
