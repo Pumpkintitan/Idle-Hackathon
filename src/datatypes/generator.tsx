@@ -39,7 +39,7 @@ export const generators: Generator[] = [
         name: "Startup",
         cost: 1000000,
         icon: <GarageVariant />,
-        requisites: "Acceleration",
+        requisites: "Cloud Service",
         description: "",
         production: 1000,
         upgrades: ["Hire Intern", "Hire Fulltime Developers", "Hire Senior Developer", "Hire Contractors"]

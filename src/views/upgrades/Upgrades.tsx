@@ -109,11 +109,11 @@ function GeneratorListItem(props: Generator) {
                 secondaryAction={
                     <ButtonGroup variant="outlined">
                         <BuyButton onClick={() => buyGenerator(generator.name, 1, generator.cost)}
-                                   disabled={generator.cost > currency}>
+                                   disabled={generator.cost > currency || (!(generators.has(generator.requisites || "")) && !(generator.requisites == null))}>
                             +1
                         </BuyButton>
                         <BuyButton onClick={() => buyGenerator(generator.name, 10, generator.cost)}
-                                   disabled={generator.cost * 10 > currency}>
+                                   disabled={generator.cost * 10 > currency || (!(generators.has(generator.requisites || "")) && !(generator.requisites == null))}>
                             +10
                         </BuyButton>
                     </ButtonGroup>
@@ -121,7 +121,7 @@ function GeneratorListItem(props: Generator) {
             >
                 <ListItemAvatar>
                     <Avatar variant={'rounded'}
-                            sx={{
+                            sx={ (generators.has(generator.requisites || "")) || generator.requisites == null ? {
                                 width: "60px",
                                 height: "60px",
                                 '& > *': {
@@ -130,6 +130,11 @@ function GeneratorListItem(props: Generator) {
                                 },
                                 background: "none",
                                 color: theme.palette.primary.main
+                            } : {
+                                width: "60px",
+                                height: "60px",
+                                background: "none",
+                                color: theme.palette.primary.light
                             }}
                     >
                         {generator.icon}
