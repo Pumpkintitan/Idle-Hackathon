@@ -3,6 +3,7 @@ import React from 'react';
 import {useLinesOfCode} from "../../hooks/stats/LinesOfCode";
 import {useLinesPerSec} from '../../hooks/upgrades/LinesPerSec'
 import {Grid, Typography} from "@mui/material";
+import { numberConverter } from "../../utils/numberconverter";
 
 export function Stats() {
     const [currency] = useLinesOfCode();
@@ -13,12 +14,12 @@ export function Stats() {
             <Grid item xs={12} container padding={2}>
                 <Grid item xs={12}>
                     <Typography variant={'h3'}>
-                        {Math.trunc(currency).toLocaleString('en-us')} lines
+                        {numberConverter(currency)} lines
                     </Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <Typography variant={'h5'}>
-                        {Math.trunc(lps).toLocaleString('en-us')} Lines per Second
+                        {numberConverter(lps)} Lines per Second
                     </Typography>
                 </Grid>
             </Grid>

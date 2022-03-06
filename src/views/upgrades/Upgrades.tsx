@@ -18,6 +18,7 @@ import {useLinesOfCode} from "../../hooks/stats/LinesOfCode";
 import {BuyButton} from "../../components/button/BuyButton";
 import {ExtendedTheme} from "../../hooks/styles/Theme";
 import {useUpgrades} from "../../hooks/upgrades/Upgrades";
+import { numberConverter } from "../../utils/numberconverter";
 
 function UpgradeListItem(props: Upgrade) {
 
@@ -101,7 +102,7 @@ function GeneratorListItem(props: Generator) {
                 </ListItemAvatar>
                 <ListItemText
                     primary={`${generator.name} (${Math.floor(generators.get(generator.name) || 0)})`}
-                    secondary={`${generator.cost} LOC`}
+                    secondary={`${numberConverter(generator.cost)} LOC`}
                 />
             </ListItem>
             <ListItem
