@@ -1,11 +1,19 @@
 import {Section} from "../../components/paper/Section";
 import React from 'react';
-import { useGenerators } from "../../hooks/upgrades/Generators";
-import {Avatar, Box, Button, ButtonGroup, IconButton, List, ListItem, ListItemAvatar, ListItemText, Tooltip} from "@mui/material";
-import FolderIcon from '@mui/icons-material/Folder';
-import { Upgrade, upgrades } from "../../datatypes/upgrade";
-import { Generator, generators } from "../../datatypes/generator";
-import { Buyable } from "../../datatypes/buyable"
+import {useGenerators} from "../../hooks/upgrades/Generators";
+import {
+    Avatar,
+    Button,
+    ButtonGroup,
+    IconButton,
+    List,
+    ListItem,
+    ListItemAvatar,
+    ListItemText,
+    Tooltip
+} from "@mui/material";
+import {Upgrade, upgrades} from "../../datatypes/upgrade";
+import {Generator, generators} from "../../datatypes/generator";
 
 function UpgradeListItem(props: Upgrade) {
     const upgrade = props;
@@ -36,7 +44,7 @@ function GeneratorListItem(props: Generator) {
             <ListItem
                 sx={{width: '100%'}}
                 secondaryAction={
-                    <ButtonGroup variant="text" >
+                    <ButtonGroup variant="text">
                         <Button onClick={() => buyGenerator(generator.name, 1)}>
                             +1
                         </Button>
@@ -63,8 +71,8 @@ function GeneratorListItem(props: Generator) {
                     flexDirection: 'row-reverse'
                 }}
             >
-                {generatorUpgrades.map((upgrade: Upgrade) => <UpgradeListItem {... upgrade} />)}
-            
+                {generatorUpgrades.map((upgrade: Upgrade) => <UpgradeListItem key={upgrade.name} {...upgrade} />)}
+
             </ListItem>
         </>
     )
@@ -73,8 +81,8 @@ function GeneratorListItem(props: Generator) {
 export function GeneratorList() {
     return (
         <Section title={'Geneartors'} xs={12}>
-            <List sx={{width: '100%', height: '100%', overflow: 'scroll'}}>
-                {generators.map((generator: Generator) => <GeneratorListItem {... generator} />)}
+            <List sx={{width: '100%', height: '80vh', overflow: 'scroll'}}>
+                {generators.map((generator: Generator) => <GeneratorListItem key={generator.name} {...generator} />)}
             </List>
         </Section>
     )
