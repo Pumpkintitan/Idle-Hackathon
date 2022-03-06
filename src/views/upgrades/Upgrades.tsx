@@ -152,12 +152,12 @@ function GeneratorListItem(props: Generator) {
                 sx={{width: '100%'}}
                 secondaryAction={
                     <ButtonGroup variant="outlined">
-                        <BuyButton onClick={() => buyGenerator(generator.name, 1, generator.cost)}
-                                   disabled={generator.cost > currency || (!(generators.has(generator.requisites || "")) && !(generator.requisites == null))}>
+                        <BuyButton onClick={() => buyGenerator(generator.name, 1, generator.cost * Math.pow(1.05, (manualGenerators.get(generator.name) || 0)))}
+                                   disabled={generator.cost * Math.pow(1.05, (manualGenerators.get(generator.name) || 0)) > currency || (!(generators.has(generator.requisites || "")) && !(generator.requisites == null))}>
                             +1
                         </BuyButton>
-                        <BuyButton onClick={() => buyGenerator(generator.name, 10, generator.cost)}
-                                   disabled={generator.cost * 10 > currency || (!(generators.has(generator.requisites || "")) && !(generator.requisites == null))}>
+                        <BuyButton onClick={() => buyGenerator(generator.name, 10, generator.cost * Math.pow(1.05, ((manualGenerators.get(generator.name) || 0)+10)))}
+                                   disabled={generator.cost * Math.pow(1.05, ((manualGenerators.get(generator.name) || 0)+10)) * 10 > currency || (!(generators.has(generator.requisites || "")) && !(generator.requisites == null))}>
                             +10
                         </BuyButton>
                     </ButtonGroup>
@@ -186,7 +186,7 @@ function GeneratorListItem(props: Generator) {
                 </ListItemAvatar>
                 <ListItemText
                     primary={`${generator.name} (${numberConverter(Math.floor(generators.get(generator.name) || 0))})`}
-                    secondary={`${numberConverter(generator.cost)} LOC`}
+                    secondary={`${numberConverter(generator.cost * Math.pow(1.05, (manualGenerators.get(generator.name) || 0)))} LOC`}
                 />
             </ListItem>
             <ListItem
